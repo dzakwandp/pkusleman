@@ -7,7 +7,7 @@
       <img :src="logo" class="w-1/2" />
       <div class="flex font-bold text-[#0A6E45] gap-6 px-6">
         <div v-for="item in links" :key="item.index">
-          <router-link :to="item.link">{{ item.title }}</router-link>
+          <RouterLink :to="item.link">{{ item.title }}</RouterLink>
         </div>
       </div>
     </div>
@@ -27,6 +27,7 @@
 
 <script>
 import logo from "@/assets/images/logo.png";
+import { RouterLink } from "vue-router";
 export default {
   data() {
     return {
