@@ -24,6 +24,7 @@ import Lab from "@/assets/images/lab.png";
 import Radiologi from "@/assets/images/radiology.png";
 import Farmasi from "@/assets/images/farmasi.png";
 import KBer from "@/assets/images/kamar_bersalin.png";
+import Bedah from "@/assets/images/bedah.png"
 import { RouterLink } from "vue-router";
 export default {
   data() {
@@ -36,6 +37,7 @@ export default {
         { title: "Laboratorium", image: Lab, link: "/layanan/laboratorium" },
         { title: "Radiologi", image: Radiologi, link: "/layanan/radiologi" },
         { title: "Farmasi", image: Farmasi, link: "/layanan/farmasi" },
+        { title: "Bedah Sentral", image: Bedah, link: "/layanan/bedahsentral" },
         {
           title: "Kamar Bersalin",
           image: KBer,

@@ -11,7 +11,7 @@
           <img :src="items.image" />
         </slide>
       </carousel>
-      <div class="grid grid-cols-2 gap-4 w-1/3 mx-auto content-center">
+      <div class="grid grid-cols-3 gap-4 w-1/2 mx-auto content-center">
         <RouterLink v-for="items in home" :key="items.index" :to="items.link">
           <div
             class="flex flex-col gap-4 aspect-square hover:bg-[#0A6E45]/40 shadow-md shadow-[#0A6E45] items-center justify-center outline outline-2 outline-[#0A6E45] rounded-md transition-colors duration-500 cursor-pointer">
@@ -38,8 +38,10 @@ import pic4 from "@/assets/images/rawatinap.jpeg";
 import pic5 from "@/assets/images/radiologi.jpeg";
 import pic6 from "@/assets/images/kamarbersalin.jpeg";
 import pic7 from "@/assets/images/nursestation.jpeg";
+import pic8 from "@/assets/images/bedahsentral.jpeg";
 import profil from "@/assets/images/profile.png";
 import layanan from "@/assets/images/layanan.png";
+import doctor from "@/assets/images/doctor.png";
 export default {
   components: {
     Carousel,
@@ -58,10 +60,12 @@ export default {
         { image: pic5 },
         { image: pic6 },
         { image: pic7 },
+        { image: pic8 },
       ],
       home: [
         { title: "Profil", image: profil, link: "/profil" },
         { title: "Layanan", image: layanan, link: "/layanan" },
+        { title: "Jadwal Dokter", image: doctor, link: "/jadwaldokter" },
       ],
     };
   },

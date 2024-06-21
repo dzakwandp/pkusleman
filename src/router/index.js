@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "@/views/home.vue";
 import Profile from "@/views/profile.vue";
 import Layanan from "@/views/layanan.vue";
+import JadwalDokter from "@/views/jadwaldokter.vue";
 
 import igd from "@/views/layanan/igd.vue";
 import rawatjalan from "@/views/layanan/rawatjalan.vue";
@@ -11,6 +12,7 @@ import farmasi from "@/views/layanan/farmasi.vue";
 import radiologi from "@/views/layanan/radiologi.vue";
 import laboratorium from "@/views/layanan/laboratorium.vue";
 import kamarbersalin from "@/views/layanan/kamarbersalin.vue";
+import bedahsentral from "@/views/layanan/bedahsentral.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -34,6 +36,11 @@ const router = createRouter({
       path: "/layanan",
       name: "layanan",
       component: Layanan,
+    },
+    {
+      path: "/jadwaldokter",
+      name: "jadwaldokter",
+      component: JadwalDokter,
     },
     {
       path: "/layanan/igd",
@@ -69,6 +76,11 @@ const router = createRouter({
       path: "/layanan/kamarbersalin",
       name: "kamarbersalin",
       component: kamarbersalin,
+    },
+    {
+      path: "/layanan/bedahsentral",
+      name: "bedahsentral",
+      component: bedahsentral,
     },
   ],
   scrollBehavior(to, from, savedPosition) {
