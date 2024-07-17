@@ -2,12 +2,12 @@
   <div class="flex flex-col w-full mt-0">
     <img :src="profileImage" class="brightness-75" />
     <div class="my-6 bg-[#0A6E45] h-2 w-3/4 mx-auto"></div>
-    <div class="flex">
-      <div class="flex size-1/2 justify-center">
+    <div class="flex flex-col md:flex-row">
+      <div class="flex md:size-1/2 justify-center">
         <img :src="logoCenter" class="size-1/2" />
       </div>
-      <div class="w-1/2 h-max">
-        <div class="w-2/3 h-max text-justify">
+      <div class="md:w-1/2 h-max">
+        <div class="w-3/4 md:w-2/3 h-max text-justify mx-auto mt-4 md:mt-0">
           <p>
             RS PKU Muhammadiyah Sleman adalah rumah sakit milik Persyarikatan
             Muhammadiyah. Pendirian Rumah Sakit diinisiasi oleh Pimpinan Daerah

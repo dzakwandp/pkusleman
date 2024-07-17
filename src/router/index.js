@@ -4,6 +4,7 @@ import Home from "@/views/home.vue";
 import Profile from "@/views/profile.vue";
 import Layanan from "@/views/layanan.vue";
 import JadwalDokter from "@/views/jadwaldokter.vue";
+import InformasiBed from "@/views/informasibed.vue";
 
 import igd from "@/views/layanan/igd.vue";
 import rawatjalan from "@/views/layanan/rawatjalan.vue";
@@ -41,6 +42,11 @@ const router = createRouter({
       path: "/jadwaldokter",
       name: "jadwaldokter",
       component: JadwalDokter,
+    },
+    {
+      path: "/informasibed",
+      name: "informasibed",
+      component: InformasiBed,
     },
     {
       path: "/layanan/igd",

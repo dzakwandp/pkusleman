@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col w-full mt-32 mx-10">
+  <div class="flex flex-col w-full mt-32 md:mx-10">
     <div class="flex w-3/4 mx-auto">
       <div class="text-[#0A6E45] font-bold text-3xl">Jadwal Dokter</div>
     </div>
@@ -11,7 +11,7 @@
           v-for="src in images"
           :key="src"
           :src="src"
-          class="w-1/3 cursor-pointer" />
+          class="w-full md:w-1/3 cursor-pointer" />
       </VueViewer>
       <div class="text-sm mt-4 italic underline">
         Demi kenyamanan anda silahkan menghubungi kami H-1 sebelum periksa

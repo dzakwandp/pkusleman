@@ -1,9 +1,9 @@
 <template>
-  <div class="flex flex-col">
-    <div class="flex w-full gap-2 px-4 my-10">
+  <div class="flex flex-col w-full">
+    <div class="flex flex-col md:flex-row w-full gap-2 px-4 my-10">
       <!-- right section -->
-      <div class="flex flex-col w-1/3 px-20 gap-4">
-        <img :src="logo" class="w-max" />
+      <div class="flex flex-col w-full md:w-1/3 md:px-20 gap-4">
+        <img :src="logo" class="size-2/3 md:size-max" />
         <div class="flex items-center gap-4">
           <font-awesome-icon icon="location-dot" size="xl" color="#0A6E45" />
           <div>
@@ -22,7 +22,7 @@
       </div>
 
       <!-- center section -->
-      <div class="flex flex-col w-1/3 px-20 gap-4">
+      <div class="flex flex-col w-full md:w-1/3 mt-4 md:mt-0 md:px-20 gap-4">
         <div class="text-3xl font-semibold text-slate-900">Links</div>
         <div
           v-for="item in links"
@@ -36,7 +36,7 @@
       </div>
 
       <!-- right section -->
-      <div class="flex flex-col w-1/3 px-20 gap-4">
+      <div class="flex flex-col w-full md:w-1/3 mt-4 md:mt-0 md:px-20 gap-4">
         <div class="text-3xl font-semibold text-slate-900">Hubungi Kami</div>
         <div class="flex items-center gap-4">
           <font-awesome-icon icon="envelope" size="xl" color="#0A6E45" />
@@ -73,6 +73,8 @@ export default {
         { title: "Home", link: "/" },
         { title: "Profil", link: "/profil" },
         { title: "Layanan", link: "/layanan" },
+        { title: "Jadwal Dokter", link: "/jadwaldokter" },
+        { title: "Informasi Bed", link: "/informasibed" },
       ],
     };
   },
