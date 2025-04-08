@@ -30,8 +30,9 @@
       <div
         v-for="item in counts"
         :key="item.index"
-        class="flex items-center justify-center w-1/4 gap-2">
-        <p class="text-primary-green text-5xl">{{ item.text }}</p>
+        class="flex items-center justify-center w-1/4">
+        <NumberTicker class="text-primary-green text-5xl" :value="item.text" :delay="500" :duration="2000" :decimalPlaces="0" />
+        <p class="text-primary-green text-5xl mr-2">{{ item.plus }}</p>
         <p class="text-gray-800 font-semibold">{{ item.subText }}</p>
       </div>
     </div>
@@ -144,6 +145,7 @@
 <script>
 import mainImage from "@/assets/images/main_image.png";
 import Button from "@/components/inspira-ui/InteractiveHoverButton.vue";
+import NumberTicker from "@/components/inspira-ui/NumberTicker.vue";
 import Gallery from "@/components/inspira-ui/ExpandableGallery.vue";
 import Blur from "@/components/inspira-ui/BlurReveal.vue";
 import CardHover from "@/components/inspira-ui/DirectionAwareHover.vue";
@@ -173,6 +175,7 @@ import moment from "moment";
 export default {
   components: {
     Button,
+    NumberTicker,
     Gallery,
     Blur,
     CardHover,
@@ -199,11 +202,12 @@ export default {
       counts: [
         {
           text: moment().diff("2023-02-23", "years"),
+          plus: "",
           subText: "Tahun Melayani",
         },
-        { text: "120+", subText: "Tenaga Medis" },
-        { text: "2.500+", subText: "Pasien Terlayani" },
-        { text: "20+", subText: "Mitra Asuransi" },
+        { text: 120, plus: "+", subText: "Tenaga Medis" },
+        { text: 2500, plus: "+", subText: "Pasien Terlayani" },
+        { text: 20, plus: "+", subText: "Mitra Asuransi" },
       ],
       images: [image1, image2, image3, image4],
       layanan: [
