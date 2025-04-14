@@ -10,9 +10,9 @@
       <a
         class="underline"
         href="https://daftar.pkusleman.com/jadwal-dokter/"
-        target="_blank"
-        >disini</a
-      >
+        target="_blank">
+        disini
+      </a>
     </p>
     <div class="flex flex-col gap-6">
       <div
@@ -25,7 +25,7 @@
         </div>
         <div class="flex flex-wrap w-3/4">
           <div v-for="item in dokter" :key="item.index">
-            <FlipCard v-if="spesial.text === item.spesialisasi" class="mr-6">
+            <FlipCard v-if="spesial.text === item.group" class="mr-6 mt-6">
               <template #default>
                 <div
                   class="flex h-full items-end"
@@ -85,7 +85,7 @@ export default {
         );
         this.dokter = dokter.data;
         this.spesialisasi = [
-          ...new Set(this.dokter.map((item) => item.spesialisasi)),
+          ...new Set(this.dokter.map((item) => item.group)),
         ]
           .sort((a, b) => a.localeCompare(b))
           .map((item) => ({ text: item }));

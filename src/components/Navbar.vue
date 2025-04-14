@@ -54,30 +54,70 @@
         :src="Logo"
         class="h-full py-2 cursor-pointer"
         @click="this.$router.push('/')" />
-      <div class="flex h-full gap-10">
-        <RouterLink
-          v-for="link in links"
-          :key="index"
-          :to="link.location"
-          class="flex items-center h-full hover:border-b-2 border-b-primary-green"
-          activeClass="border-b-2 border-b-primary-green">
-          <div class="font-light">{{ link.text }}</div>
-        </RouterLink>
-      </div>
+      <nav class="flex items-center h-full">
+        <ul class="flex font-medium text-gray-800 space-x-10 h-full">
+          <li
+            v-for="link in links"
+            :key="link.text"
+            class="flex relative group h-full items-center">
+            <RouterLink
+              v-if="!link.child"
+              :to="link.location"
+              class="hover:text-primary-green transition-colors">
+              {{ link.text }}
+            </RouterLink>
+
+            <!-- Dropdown trigger -->
+            <div
+              v-else
+              class="cursor-pointer hover:text-primary-green transition-colors">
+              {{ link.text }}
+              <font-awesome-icon
+                :icon="['fas', 'chevron-down']"
+                class="ml-1 inline text-sm transition-transform group-hover:rotate-180" />
+
+              <!-- Dropdown menu -->
+              <ul
+                class="absolute left-0 z-10 mt-2 hidden w-48 rounded-md bg-white p-2 shadow-lg group-hover:block">
+                <li v-for="child in link.child" :key="child.text">
+                  <RouterLink
+                    :to="child.location"
+                    class="block rounded px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary-green">
+                    {{ child.text }}
+                  </RouterLink>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
     </div>
   </div>
 </template>
 
 <script>
 import Logo from "@/assets/images/logo.png";
+import { RouterLink } from "vue-router";
 export default {
   data() {
     return {
       Logo: Logo,
       links: [
-        { text: "Profile Kami", location: "/jadwaldokter" },
-        { text: "Dokter", location: "/dokter" },
+        {
+          text: "Dokter",
+          child: [
+            { text: "Daftar Dokter", location: "/dokter" },
+            { text: "Jadwal Dokter", location: "/jadwaldokter" },
+          ],
+        },
         { text: "Layanan Kesehatan", location: "/layanan" },
+        {
+          text: "Tentang Kami",
+          child: [
+            { text: "Profile", location: "/profile" },
+            { text: "Hubungi Kami", location: "/contact" },
+          ],
+        },
         { text: "Pusat Informasi", location: "/daftaronline" },
       ],
       socials: [
