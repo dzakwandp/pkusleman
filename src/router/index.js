@@ -4,6 +4,7 @@ import Home from "@/views/Home.vue";
 import Layanan from "@/views/Layanan/Layanan.vue";
 import Dokter from "@/views/Dokter/Dokter.vue";
 import Profile from "@/views/Tentang/Profile.vue";
+import Contact from "@/views/Tentang/Contact.vue";
 
 // import InformasiBed from "@/views/informasibed.vue";
 
@@ -55,6 +56,11 @@ const router = createRouter({
       path: "/profile",
       name: "profile",
       component: Profile,
+    },
+    {
+      path: "/contact",
+      name: "contact",
+      component: Contact,
     },
     // {
     //   path: "/informasibed",
