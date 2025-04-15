@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "@/views/Home.vue";
 import Layanan from "@/views/Layanan/Layanan.vue";
 import Dokter from "@/views/Dokter/Dokter.vue";
+import Profile from "@/views/Tentang/Profile.vue";
 
 // import InformasiBed from "@/views/informasibed.vue";
 
@@ -49,6 +50,11 @@ const router = createRouter({
       path: "/dokter",
       name: "dokter",
       component: Dokter,
+    },
+    {
+      path: "/profile",
+      name: "profile",
+      component: Profile,
     },
     // {
     //   path: "/informasibed",
