@@ -5,6 +5,7 @@ import Layanan from "@/views/Layanan/Layanan.vue";
 import Dokter from "@/views/Dokter/Dokter.vue";
 import Profile from "@/views/Tentang/Profile.vue";
 import Contact from "@/views/Tentang/Contact.vue";
+import History from "@/views/Tentang/History.vue";
 
 // import InformasiBed from "@/views/informasibed.vue";
 
@@ -61,6 +62,11 @@ const router = createRouter({
       path: "/contact",
       name: "contact",
       component: Contact,
+    },
+    {
+      path: "/history",
+      name: "history",
+      component: History,
     },
     // {
     //   path: "/informasibed",

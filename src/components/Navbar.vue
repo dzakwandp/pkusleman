@@ -115,6 +115,7 @@ export default {
           text: "Tentang Kami",
           child: [
             { text: "Profile", location: "/profile" },
+            { text: "Sejarah", location: "/history" },
             { text: "Hubungi Kami", location: "/contact" },
           ],
         },

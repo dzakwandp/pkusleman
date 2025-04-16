@@ -1,5 +1,5 @@
 <template>
-  <li class="flex flex-col px-20 my-10">
+  <div class="flex flex-col px-20 my-10">
     <div class="h-[60vh]">
       <ImageSlider :images="images" autoplay class="rounded-xl" />
     </div>
@@ -75,7 +75,7 @@
         </li>
       </ul>
     </div>
-  </li>
+  </div>
 </template>
 
 <script>
@@ -84,6 +84,7 @@ import image1 from "@/assets/images/profile/1.jpeg";
 import image2 from "@/assets/images/profile/2.jpeg";
 import image3 from "@/assets/images/profile/3.jpeg";
 import image4 from "@/assets/images/profile/4.jpeg";
+import image5 from "@/assets/images/profile/4.jpeg";
 import Logo from "@/assets/images/logo_center.png";
 export default {
   components: {
@@ -92,7 +93,7 @@ export default {
   data() {
     return {
       Logo: Logo,
-      images: [image1, image2, image3, image4],
+      images: [image1, image2, image3, image4, image5],
     };
   },
 };
