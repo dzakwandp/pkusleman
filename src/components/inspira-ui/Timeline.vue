@@ -12,7 +12,7 @@
       </p>
     </div>
 
-    <div ref="timelineRef" class="relative z-0 mx-auto max-w-7xl pb-40 -mt-20">
+    <div ref="timelineRef" class="relative z-0 mx-auto max-w-7xl pb-20 -mt-20">
       <div
         v-for="(item, index) in props.items"
         :key="item.id + index"
