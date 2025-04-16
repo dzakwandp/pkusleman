@@ -1,7 +1,11 @@
 <template>
   <div>
     <Navbar />
-    <RouterView />
+    <RouterView class="router-view" v-slot="{Component}">
+      <Transition name="fade" mode="out-in">
+        <component :is="Component"/>
+      </Transition>
+    </RouterView>
     <Footer />
   </div>
 </template>
@@ -17,4 +21,14 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style>
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.4s;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  filter: blur(1rem);
+}
+</style>
