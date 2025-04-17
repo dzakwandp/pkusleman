@@ -119,7 +119,15 @@ export default {
             { text: "Hubungi Kami", location: "/contact" },
           ],
         },
-        { text: "Pusat Informasi", location: "/daftaronline" },
+        {
+          text: "Pusat Informasi",
+          child: [
+            {
+              text: "Informasi Tempat Tidur",
+              location: "/informasi-tempat-tidur",
+            },
+          ],
+        },
       ],
       socials: [
         {

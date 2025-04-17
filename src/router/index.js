@@ -7,7 +7,7 @@ import Profile from "@/views/Tentang/Profile.vue";
 import Contact from "@/views/Tentang/Contact.vue";
 import History from "@/views/Tentang/History.vue";
 
-// import InformasiBed from "@/views/informasibed.vue";
+import InfoBed from "@/views/Informasi/InfoBed.vue";
 
 // import igd from "@/views/layanan/igd.vue";
 // import rawatjalan from "@/views/layanan/rawatjalan.vue";
@@ -68,11 +68,11 @@ const router = createRouter({
       name: "history",
       component: History,
     },
-    // {
-    //   path: "/informasibed",
-    //   name: "informasibed",
-    //   component: InformasiBed,
-    // },
+    {
+      path: "/informasi-tempat-tidur",
+      name: "informasi-tempat-tidur",
+      component: InfoBed,
+    },
     // {
     //   path: "/layanan/igd",
     //   name: "igd",
