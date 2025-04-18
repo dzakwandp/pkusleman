@@ -78,7 +78,7 @@
 
               <!-- Dropdown menu -->
               <ul
-                class="absolute left-0 z-10 mt-2 hidden w-48 rounded-md bg-white p-2 shadow-lg group-hover:block">
+                class="absolute right-0 z-10 mt-2 hidden w-max rounded-md bg-white p-2 shadow-lg group-hover:flex group-hover:flex-col">
                 <li v-for="child in link.child" :key="child.text">
                   <RouterLink
                     :to="child.location"
@@ -125,6 +125,10 @@ export default {
             {
               text: "Informasi Tempat Tidur",
               location: "/informasi-tempat-tidur",
+            },
+            {
+              text: "Asuransi",
+              location: "/asuransi",
             },
           ],
         },
