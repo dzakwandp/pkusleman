@@ -24,12 +24,17 @@
         :key="item.index"
         class="flex flex-col w-full h-full p-4 shadow-lg text-gray-800 rounded-xl hover:bg-primary-green hover:text-white transition duration-500">
         <img :src="getImage(item.kodekelas)" class="rounded-xl mb-2" />
-        <p class="text-sm">{{ getKelas(item.kodekelas) }}</p>
+        <p class="text-sm font-bold">{{ getKelas(item.kodekelas) }}</p>
         <p class="font-semibold">{{ item.namaruang }}</p>
         <div class="flex justify-between text-sm">
           <p>Tersedia: {{ item.tersedia }}</p>
           <p>Kapasitas: {{ item.kapasitas }}</p>
         </div>
+        <p class="text-xs mt-2">
+          Terakhir Update: <br />{{
+            moment(item.tanggal_updated).format("DD-MM-YYYY HH:mm:s")
+          }}
+        </p>
       </div>
     </div>
   </div>
@@ -37,6 +42,7 @@
 
 <script>
 import axios from "axios";
+import moment from "moment";
 import hcu from "@/assets/images/bed/hcu.jpg";
 import icu from "@/assets/images/bed/icu.jpg";
 import isolasi from "@/assets/images/bed/isolasi.jpg";
@@ -47,6 +53,9 @@ import nicu from "@/assets/images/bed/nicu.jpg";
 import nonkelas from "@/assets/images/bed/nonkelas.jpg";
 
 export default {
+  setup() {
+    return { moment };
+  },
   data() {
     return {
       ttidur: [],
