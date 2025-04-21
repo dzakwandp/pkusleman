@@ -3,12 +3,14 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "@/views/Home.vue";
 import Layanan from "@/views/Layanan/Layanan.vue";
 import Dokter from "@/views/Dokter/Dokter.vue";
+
 import Profile from "@/views/Tentang/Profile.vue";
 import Contact from "@/views/Tentang/Contact.vue";
 import History from "@/views/Tentang/History.vue";
 
 import InfoBed from "@/views/Informasi/InfoBed.vue";
 import Asuransi from "@/views/Informasi/Asuransi.vue";
+import Promo from "@/views/Informasi/Promo.vue";
 
 import Redir from "@/views/Redir.vue";
 // import igd from "@/views/layanan/igd.vue";
@@ -38,7 +40,7 @@ const router = createRouter({
       path: "/jadwaldokter",
       name: "jadwaldokter",
       beforeEnter(to, from, next) {
-        console.log(from)
+        console.log(from);
         if (!from.name) {
           router.push({ name: "redir", query: { from: "jadwaldokter" } });
         } else {
@@ -55,9 +57,7 @@ const router = createRouter({
         if (!from.name) {
           router.push({ name: "redir", query: { from: "daftaronline" } });
         } else {
-          window
-            .open("https://daftar.pkusleman.com/", "_blank")
-            .focus();
+          window.open("https://daftar.pkusleman.com/", "_blank").focus();
         }
       },
     },
@@ -95,6 +95,11 @@ const router = createRouter({
       path: "/asuransi",
       name: "asuransi",
       component: Asuransi,
+    },
+    {
+      path: "/promo",
+      name: "promo",
+      component: Promo,
     },
     // {
     //   path: "/layanan/igd",

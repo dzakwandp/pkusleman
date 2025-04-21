@@ -130,6 +130,10 @@ export default {
               text: "Asuransi",
               location: "/asuransi",
             },
+            {
+              text: "Promo Layanan",
+              location: "/promo",
+            },
           ],
         },
       ],
