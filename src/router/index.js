@@ -120,8 +120,8 @@ const router = createRouter({
     //   component: bedahsentral,
     // },
   ],
-  scrollBehavior(to, from, savedPosition) {
-    return { top: 0 };
+  scrollBehavior() {
+    return false;
   },
 });
 

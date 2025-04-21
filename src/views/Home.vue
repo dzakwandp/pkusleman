@@ -95,7 +95,7 @@
         <Button
           text="Dokter"
           class="rounded-xl w-48 text-gray-800 mt-2"
-          @click="this.$router.push('/layanan')"></Button>
+          @click="this.$router.push('/dokter')"></Button>
       </div>
       <div class="w-2/3 px-20">
         <img :src="doctor" class="" />

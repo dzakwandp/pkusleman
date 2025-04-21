@@ -1,9 +1,9 @@
 <template>
   <div>
     <Navbar />
-    <RouterView class="router-view" v-slot="{Component}">
-      <Transition name="fade" mode="out-in">
-        <component :is="Component"/>
+    <RouterView class="router-view" v-slot="{ Component }">
+      <Transition name="fade" mode="out-in" @before-enter="handleAfterEnter">
+        <component :is="Component" />
       </Transition>
     </RouterView>
     <Footer />
@@ -17,6 +17,11 @@ export default {
   components: {
     Navbar,
     Footer,
+  },
+  methods: {
+    handleAfterEnter() {
+      window.scrollTo({ top: 0 });
+    },
   },
 };
 </script>
