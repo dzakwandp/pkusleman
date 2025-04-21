@@ -31,7 +31,12 @@
         v-for="item in counts"
         :key="item.index"
         class="flex items-center justify-center w-1/4">
-        <NumberTicker class="text-primary-green text-5xl" :value="item.text" :delay="500" :duration="2000" :decimalPlaces="0" />
+        <NumberTicker
+          class="text-primary-green text-5xl"
+          :value="item.text"
+          :delay="500"
+          :duration="2000"
+          :decimalPlaces="0" />
         <p class="text-primary-green text-5xl mr-2">{{ item.plus }}</p>
         <p class="text-gray-800 font-semibold">{{ item.subText }}</p>
       </div>
@@ -127,14 +132,14 @@
         <img
           v-for="item in mitra"
           :key="item.index"
-          :src="item"
+          :src="'https://apiweb.pkusleman.com' + item.image"
           class="h-12 mx-2" />
       </Marquee>
       <Marquee pause-on-hover reverse class="[--duration:20s]">
         <img
           v-for="item in mitra"
           :key="item.index"
-          :src="item"
+          :src="'https://apiweb.pkusleman.com' + item.image"
           class="h-12 mx-2" />
       </Marquee>
       <Button class="w-48 rounded-xl text-gray-800" text="Selengkapnya" />
@@ -162,16 +167,8 @@ import rawatjalan from "@/assets/images/homePage/rawatjalan.jpeg";
 import doctor from "@/assets/images/homePage/doctor.png";
 import avaMale from "@/assets/images/ava_male.jpg";
 import avaFemale from "@/assets/images/ava_female.jpg";
-import admedika from "@/assets/images/mitra/admedika.png";
-import bnilife from "@/assets/images/mitra/bnilife.png";
-import bpjs_kes from "@/assets/images/mitra/bpjs_kes.png";
-import bpjs_ket from "@/assets/images/mitra/bpjs_ket.png";
-import jasaraharja from "@/assets/images/mitra/jasaraharja.png";
-import kai from "@/assets/images/mitra/kai.png";
-import medikaplaza from "@/assets/images/mitra/medikaplaza.png";
-import sgi from "@/assets/images/mitra/sgi.png";
-import taspen from "@/assets/images/mitra/taspen.png";
 import moment from "moment";
+import axios from "axios";
 export default {
   components: {
     Button,
@@ -246,17 +243,23 @@ export default {
           designation: "",
         },
       ],
-      mitra: [
-        bpjs_kes,
-        jasaraharja,
-        admedika,
-        bnilife,
-        kai,
-        medikaplaza,
-        sgi,
-        taspen,
-      ],
+      mitra: [],
     };
+  },
+  methods: {
+    async getMitra() {
+      try {
+        const mitra = await axios.get(
+          "https://apiweb.pkusleman.com/api/asuransi"
+        );
+        this.mitra = mitra.data;
+      } catch (err) {
+        console.log(err);
+      }
+    },
+  },
+  mounted() {
+    this.getMitra();
   },
 };
 </script>

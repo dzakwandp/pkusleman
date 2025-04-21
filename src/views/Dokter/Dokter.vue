@@ -45,7 +45,7 @@
                     class="flex h-full items-end"
                     :style="{ backgroundImage: `url(${bgDokter})` }"
                     style="background-size: cover">
-                    <img :src="'https://apiweb.pkusleman.com/' + item.gambar" />
+                    <img :src="'https://apiweb.pkusleman.com' + item.gambar" />
                   </div>
                 </template>
                 <template #back>
