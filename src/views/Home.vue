@@ -101,7 +101,7 @@
         <img :src="doctor" class="" />
       </div>
     </div>
-    <div class="flex h-[90vh] py-10">
+    <div v-if="testimoniLoad" class="flex h-[90vh] py-10">
       <div class="flex w-2/3 pl-20 items-center">
         <Testimonial
           :testimonials="testimoni"
@@ -165,8 +165,6 @@ import laboratorium from "@/assets/images/homePage/laboratorium.jpeg";
 import radiologi from "@/assets/images/homePage/radiologi.jpeg";
 import rawatjalan from "@/assets/images/homePage/rawatjalan.jpeg";
 import doctor from "@/assets/images/homePage/doctor.png";
-import avaMale from "@/assets/images/ava_male.jpg";
-import avaFemale from "@/assets/images/ava_female.jpg";
 import moment from "moment";
 import axios from "axios";
 export default {
@@ -213,36 +211,8 @@ export default {
         { image: laboratorium, text: "Laboratorium" },
         { image: rawatjalan, text: "Rawat Jalan" },
       ],
-      testimoni: [
-        {
-          name: "Fillia Afiani Setyaningsih",
-          quote:
-            "Rekomendasi rumah sakit di Jogja dengan petugas2 yang handal dan profesional. Dokternya dokter-dokter terbaikk. Sukses selalu untuk PKU Muhammadiyah Slemann ✨🙌🏼",
-          image: avaFemale,
-          designation: "",
-        },
-        {
-          name: "Sobran Jamil",
-          quote:
-            "Rumah sakit baru dengan fasilitas yg memadai. Ruangan bersih dan Asri. Dengan pemandangan gunung merapi yg indah di pagi hari, Luar biasa",
-          image: avaMale,
-          designation: "",
-        },
-        {
-          name: "Yustina Wulandari",
-          quote:
-            "Pertama kali periksa di RS PKU ini. Bangunannya bagus dan bersih. Mau masuk di sambut oleh satpam dan diarahkan di pendaftaran. Bagian pendaftaran cepat, setelah itu ditensi oleh ibuk2 yg ramah.. Tidak begitu antri karena masih sepi. Saya ditangani dr. Fajar dan kakak perawatnya. Dr dan kakak perawat nya baik & ramah, sdh keluar dari ruang dokter. Kakak perawatnya masih ramah dan semangat mengingatkan untuk perawatan dirumah sesuai anjuran dokter. Pengambilan obat juga cepat dan dijelaskan dg ramah. Terimakasih PKU. Semoga sukses dan bermanfaat bagi semua orang. Amin",
-          image: avaFemale,
-          designation: "",
-        },
-        {
-          name: "Iswanto Arkan",
-          quote:
-            "Pelayanan sangat prima/baik, mulai dari security, pendaftaran, perawat, dokternya, hingga ke apoteknya. Komunikatif, ramah, murah senyum, santun. Tempatnya juga bersih, rapi dan nyaman. Prosesnya juga cepat dari pendaftaran, periksa, sampai penyerahan obat. Mungkin karena masih belum terlalu banyak pasiennya, harapan kedepannya semoga bisa tetap seperti ini meskipun banyak pasiennya. Aamiin",
-          image: avaMale,
-          designation: "",
-        },
-      ],
+      testimoni: [],
+      testimoniLoad: false,
       mitra: [],
     };
   },
@@ -257,9 +227,21 @@ export default {
         console.log(err);
       }
     },
+    async getReview() {
+      try {
+        const review = await axios.get(
+          "https://apiweb.pkusleman.com/api/review"
+        );
+        this.testimoni = review.data;
+        this.testimoniLoad = true;
+      } catch (err) {
+        console.log(err);
+      }
+    },
   },
   mounted() {
     this.getMitra();
+    this.getReview();
   },
 };
 </script>

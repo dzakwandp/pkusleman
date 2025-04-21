@@ -4,43 +4,43 @@
     <div class="relative grid grid-cols-1 gap-20 md:grid-cols-2">
       <div>
         <div class="relative h-80 w-full">
-            <Motion
-              v-for="(testimonial, index) in props.testimonials"
-              :key="testimonial.image"
-              as="div"
-              :initial="{
-                opacity: 0,
-                scale: 0.9,
-                z: -100,
-                rotate: randomRotateY(),
-              }"
-              :animate="{
-                opacity: isActive(index) ? 1 : 0.7,
-                scale: isActive(index) ? 1 : 0.95,
-                z: isActive(index) ? 0 : -100,
-                rotate: isActive(index) ? 0 : randomRotateY(),
-                zIndex: isActive(index) ? 40 : testimonials.length + 2 - index,
-                y: isActive(index) ? [0, -80, 0] : 0,
-              }"
-              :exit="{
-                opacity: 0,
-                scale: 0.9,
-                z: 100,
-                rotate: randomRotateY(),
-              }"
-              :transition="{
-                duration: 0.4,
-                ease: 'easeInOut',
-              }"
-              class="absolute inset-0 origin-bottom">
-              <img
-                :src="testimonial.image"
-                :alt="testimonial.name"
-                width="500"
-                height="500"
-                :draggable="false"
-                class="size-full rounded-3xl object-cover object-center" />
-            </Motion>
+          <Motion
+            v-for="(testimonial, index) in props.testimonials"
+            :key="testimonial.image"
+            as="div"
+            :initial="{
+              opacity: 0,
+              scale: 0.9,
+              z: -100,
+              rotate: randomRotateY(),
+            }"
+            :animate="{
+              opacity: isActive(index) ? 1 : 0.7,
+              scale: isActive(index) ? 1 : 0.95,
+              z: isActive(index) ? 0 : -100,
+              rotate: isActive(index) ? 0 : randomRotateY(),
+              zIndex: isActive(index) ? 40 : testimonials.length + 2 - index,
+              y: isActive(index) ? [0, -80, 0] : 0,
+            }"
+            :exit="{
+              opacity: 0,
+              scale: 0.9,
+              z: 100,
+              rotate: randomRotateY(),
+            }"
+            :transition="{
+              duration: 0.4,
+              ease: 'easeInOut',
+            }"
+            class="absolute inset-0 origin-bottom">
+            <img
+              :src="getImage(testimonial.image)"
+              :alt="testimonial.name"
+              width="500"
+              height="500"
+              :draggable="false"
+              class="size-full rounded-3xl object-cover object-center" />
+          </Motion>
         </div>
       </div>
       <div class="flex flex-col justify-between py-4">
@@ -101,14 +101,14 @@
             class="group/button flex size-7 items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-800"
             @click="handlePrev">
             <font-awesome-icon
-              :icon="['fas','arrow-left']"
+              :icon="['fas', 'arrow-left']"
               class="size-5 text-black transition-transform duration-300 group-hover/button:rotate-12 dark:text-neutral-400" />
           </button>
           <button
             class="group/button flex size-7 items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-800"
             @click="handleNext">
             <font-awesome-icon
-              :icon="['fas','arrow-right']"
+              :icon="['fas', 'arrow-right']"
               class="size-5 text-black transition-transform duration-300 group-hover/button:-rotate-12 dark:text-neutral-400" />
           </button>
         </div>
@@ -120,6 +120,9 @@
 <script lang="ts" setup>
 import { ref, computed, onMounted, onUnmounted } from "vue";
 import { Motion } from "motion-v";
+
+import avaMale from "@/assets/images/ava_male.jpg";
+import avaFemale from "@/assets/images/ava_female.jpg";
 
 interface Testimonial {
   quote: string;
@@ -159,6 +162,14 @@ onUnmounted(() => {
     clearInterval(interval.value);
   }
 });
+
+function getImage(gender: string) {
+  if (gender === "male") {
+    return avaMale;
+  } else {
+    return avaFemale;
+  }
+}
 
 function handleNext() {
   active.value = (active.value + 1) % props.testimonials.length;
