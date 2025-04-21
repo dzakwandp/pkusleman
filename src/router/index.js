@@ -10,6 +10,7 @@ import History from "@/views/Tentang/History.vue";
 import InfoBed from "@/views/Informasi/InfoBed.vue";
 import Asuransi from "@/views/Informasi/Asuransi.vue";
 
+import Redir from "@/views/Redir.vue";
 // import igd from "@/views/layanan/igd.vue";
 // import rawatjalan from "@/views/layanan/rawatjalan.vue";
 // import rawatinap from "@/views/layanan/rawatinap.vue";
@@ -25,23 +26,39 @@ const router = createRouter({
   routes: [
     {
       path: "/",
-      name: "",
+      name: "home",
       component: Home,
+    },
+    {
+      path: "/redir",
+      name: "redir",
+      component: Redir,
     },
     {
       path: "/jadwaldokter",
       name: "jadwaldokter",
       beforeEnter(to, from, next) {
-        window
-          .open("https://daftar.pkusleman.com/jadwal-dokter/", "_blank")
-          .focus();
+        console.log(from)
+        if (!from.name) {
+          router.push({ name: "redir", query: { from: "jadwaldokter" } });
+        } else {
+          window
+            .open("https://daftar.pkusleman.com/jadwal-dokter/", "_blank")
+            .focus();
+        }
       },
     },
     {
       path: "/daftaronline",
       name: "daftaronline",
       beforeEnter(to, from, next) {
-        window.open("https://daftar.pkusleman.com/", "_blank").focus();
+        if (!from.name) {
+          router.push({ name: "redir", query: { from: "daftaronline" } });
+        } else {
+          window
+            .open("https://daftar.pkusleman.com/", "_blank")
+            .focus();
+        }
       },
     },
     {
