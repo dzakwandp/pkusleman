@@ -11,6 +11,7 @@ import History from "@/views/Tentang/History.vue";
 import InfoBed from "@/views/Informasi/InfoBed.vue";
 import Asuransi from "@/views/Informasi/Asuransi.vue";
 import Promo from "@/views/Informasi/Promo.vue";
+import ArtikelBerita from "@/views/Informasi/ArtikelBerita.vue";
 
 import Redir from "@/views/Redir.vue";
 // import igd from "@/views/layanan/igd.vue";
@@ -101,6 +102,11 @@ const router = createRouter({
       name: "promo",
       component: Promo,
     },
+    {
+      path: "/artikel-berita",
+      name: "artikel-berita",
+      component: ArtikelBerita
+    }
     // {
     //   path: "/layanan/igd",
     //   name: "igd",

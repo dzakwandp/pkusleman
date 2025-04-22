@@ -78,7 +78,7 @@
 
               <!-- Dropdown menu -->
               <ul
-                class="absolute right-0 z-10 mt-2 hidden w-max rounded-md bg-white p-2 shadow-lg group-hover:flex group-hover:flex-col">
+                class="absolute right-0 z-10 mt-2 hidden w-max max-h-48 rounded-md bg-white p-2 shadow-lg group-hover:flex group-hover:flex-wrap group-hover:flex-col">
                 <li v-for="child in link.child" :key="child.text">
                   <RouterLink
                     :to="child.location"
@@ -97,6 +97,7 @@
 
 <script>
 import Logo from "@/assets/images/logo.png";
+import axios from "axios";
 import { RouterLink } from "vue-router";
 export default {
   data() {
@@ -110,7 +111,10 @@ export default {
             { text: "Jadwal Dokter", location: "/jadwaldokter" },
           ],
         },
-        { text: "Layanan Kesehatan", location: "/layanan" },
+        {
+          text: "Layanan Kesehatan",
+          child: [{ text: "Layanan Kami", location: "/layanan" }],
+        },
         {
           text: "Tentang Kami",
           child: [
@@ -134,6 +138,10 @@ export default {
               text: "Promo Layanan",
               location: "/promo",
             },
+            {
+              text: "Artikel & Berita",
+              location: "/artikel-berita",
+            },
           ],
         },
       ],
@@ -156,6 +164,27 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    async getLayanan() {
+      try {
+        const layan = await axios.get(
+          "http://apiweb.pkusleman.com/api/layanan"
+        );
+        this.links[1].child.push(
+          ...layan.data.map((item) => ({
+            text: item.nama_layanan,
+            location: item.route,
+          }))
+        );
+        console.log(this.links[1].child);
+      } catch (err) {
+        console.log(err);
+      }
+    },
+  },
+  mounted() {
+    this.getLayanan();
   },
 };
 </script>
