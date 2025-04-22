@@ -1,11 +1,14 @@
 <template>
   <div class="flex flex-col px-20 mt-10 min-h-screen">
-    <p class="text-4xl text-center text-gray-800">Promo Layanan</p>
+    <p class="text-4xl text-center text-gray-800">Promo Layanan.</p>
     <p class="text-gray-800 text-center">
       Berbagai promo layanan menarik untuk kebutuhan kesehatan anda.
     </p>
     <div class="grid grid-cols-5 mt-10">
-      <div v-for="item in promo" :key="item.index" class="shadow-xl rounded-lg hover:outline hover:outline-1 hover:outline-primary-green p-2">
+      <div
+        v-for="item in promo"
+        :key="item.index"
+        class="shadow-xl rounded-lg hover:outline hover:outline-1 hover:outline-primary-green p-2">
         <VueViewer :images="item.image">
           <p class="text-center font-semibold mb-2">{{ item.nama_promo }}</p>
           <img class="w-11/12 cursor-pointer mx-auto" :src="item.image" />

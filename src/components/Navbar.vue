@@ -32,7 +32,7 @@
           </div>
           <div class="flex gap-1 items-baseline text-sm">
             <p>IGD:</p>
-            <a href="tel:0881010888119">0881-0108-88-119</a>
+            <a href="tel:02747778610">(0274) 7778610</a>
           </div>
         </div>
         <div class="text-white text-xl">|</div>
