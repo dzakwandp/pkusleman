@@ -14,6 +14,7 @@ import Promo from "@/views/Informasi/Promo.vue";
 import ArtikelBerita from "@/views/Informasi/ArtikelBerita.vue";
 
 import Redir from "@/views/Redir.vue";
+import NotFound from "@/views/404.vue";
 // import igd from "@/views/layanan/igd.vue";
 // import rawatjalan from "@/views/layanan/rawatjalan.vue";
 // import rawatinap from "@/views/layanan/rawatinap.vue";
@@ -105,8 +106,13 @@ const router = createRouter({
     {
       path: "/artikel-berita",
       name: "artikel-berita",
-      component: ArtikelBerita
-    }
+      component: ArtikelBerita,
+    },
+    {
+      path: "/:pathMatch(.*)*",
+      name: "404",
+      component: NotFound,
+    },
     // {
     //   path: "/layanan/igd",
     //   name: "igd",
