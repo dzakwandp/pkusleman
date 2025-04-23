@@ -29,6 +29,8 @@ import {
   faAt,
   faCaretRight,
   faChevronDown,
+  faChildReaching,
+  faBone,
 } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 /* add icons to the library */
@@ -47,7 +49,9 @@ library.add(
   faCaretRight,
   faArrowLeft,
   faArrowRight,
-  faChevronDown
+  faChevronDown,
+  faChildReaching,
+  faBone
 );
 
 AOS.init();

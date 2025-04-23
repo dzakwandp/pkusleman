@@ -15,8 +15,9 @@ import ArtikelBerita from "@/views/Informasi/ArtikelBerita.vue";
 
 import Redir from "@/views/Redir.vue";
 import NotFound from "@/views/404.vue";
-// import igd from "@/views/layanan/igd.vue";
-// import rawatjalan from "@/views/layanan/rawatjalan.vue";
+
+import LayananIGD from "@/views/Layanan/IGD.vue";
+import RawatJalan from "@/views/layanan/RawatJalan.vue";
 // import rawatinap from "@/views/layanan/rawatinap.vue";
 // import farmasi from "@/views/layanan/farmasi.vue";
 // import radiologi from "@/views/layanan/radiologi.vue";
@@ -69,6 +70,16 @@ const router = createRouter({
       component: Layanan,
     },
     {
+      path: "/layanan-igd",
+      name: "layanan-igd",
+      component: LayananIGD
+    },
+    {
+      path: "/layanan-rawat-jalan",
+      name: "layanan-rawat-jalan",
+      component: RawatJalan
+    },
+    {
       path: "/dokter",
       name: "dokter",
       component: Dokter,
@@ -113,46 +124,6 @@ const router = createRouter({
       name: "404",
       component: NotFound,
     },
-    // {
-    //   path: "/layanan/igd",
-    //   name: "igd",
-    //   component: igd,
-    // },
-    // {
-    //   path: "/layanan/rawatjalan",
-    //   name: "rawatjalan",
-    //   component: rawatjalan,
-    // },
-    // {
-    //   path: "/layanan/rawatinap",
-    //   name: "rawatinap",
-    //   component: rawatinap,
-    // },
-    // {
-    //   path: "/layanan/farmasi",
-    //   name: "farmasi",
-    //   component: farmasi,
-    // },
-    // {
-    //   path: "/layanan/radiologi",
-    //   name: "radiologi",
-    //   component: radiologi,
-    // },
-    // {
-    //   path: "/layanan/laboratorium",
-    //   name: "laboratorium",
-    //   component: laboratorium,
-    // },
-    // {
-    //   path: "/layanan/kamarbersalin",
-    //   name: "kamarbersalin",
-    //   component: kamarbersalin,
-    // },
-    // {
-    //   path: "/layanan/bedahsentral",
-    //   name: "bedahsentral",
-    //   component: bedahsentral,
-    // },
   ],
   scrollBehavior() {
     return false;

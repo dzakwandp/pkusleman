@@ -98,7 +98,6 @@
 <script>
 import Logo from "@/assets/images/logo.png";
 import axios from "axios";
-import { RouterLink } from "vue-router";
 export default {
   data() {
     return {
@@ -177,7 +176,6 @@ export default {
             location: item.route,
           }))
         );
-        console.log(this.links[1].child);
       } catch (err) {
         console.log(err);
       }
