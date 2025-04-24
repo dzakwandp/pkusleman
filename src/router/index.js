@@ -19,12 +19,14 @@ import NotFound from "@/views/404.vue";
 import LayananIGD from "@/views/Layanan/IGD.vue";
 import RawatJalan from "@/views/layanan/RawatJalan.vue";
 import LayanLab from "@/views/layanan/Laborat.vue";
-// import rawatinap from "@/views/layanan/rawatinap.vue";
+import LayanRad from "@/views/layanan/Radiologi.vue";
+import LayanFarmasi from "@/views/layanan/Farmasi.vue";
+import RawatInap from "@/views/layanan/RawatInap.vue";
+import BedahSentral from "@/views/layanan/BedahSentral.vue";
 // import farmasi from "@/views/layanan/farmasi.vue";
 // import radiologi from "@/views/layanan/radiologi.vue";
 // import laboratorium from "@/views/layanan/laboratorium.vue";
 // import kamarbersalin from "@/views/layanan/kamarbersalin.vue";
-// import bedahsentral from "@/views/layanan/bedahsentral.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -84,6 +86,26 @@ const router = createRouter({
       path: "/layanan-laboratorium",
       name: "layanan-laboratorium",
       component: LayanLab,
+    },
+    {
+      path: "/layanan-radiologi",
+      name: "layanan-radiologi",
+      component: LayanRad,
+    },
+    {
+      path: "/layanan-farmasi",
+      name: "layanan-farmasi",
+      component: LayanFarmasi,
+    },
+    {
+      path: "/layanan-rawat-inap",
+      name: "layanan-rawat-inap",
+      component: RawatInap,
+    },
+    {
+      path: "/layanan-bedah-sentral",
+      name: "layanan-bedah-sentral",
+      component: BedahSentral,
     },
     {
       path: "/dokter",

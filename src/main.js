@@ -31,6 +31,7 @@ import {
   faChevronDown,
   faChildReaching,
   faBone,
+  faBed
 } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 /* add icons to the library */
@@ -51,7 +52,8 @@ library.add(
   faArrowRight,
   faChevronDown,
   faChildReaching,
-  faBone
+  faBone,
+  faBed
 );
 
 AOS.init();

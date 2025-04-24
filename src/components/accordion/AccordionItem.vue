@@ -1,7 +1,7 @@
 <template>
   <li class="accordion__item mb-3">
     <div
-      class="flex justify-between p-3"
+      class="flex justify-between p-3 rounded-lg"
       :class="{
         accordion__trigger_active: visible,
         'bg-primary-green text-white': visible,
