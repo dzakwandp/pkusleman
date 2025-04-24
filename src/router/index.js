@@ -18,6 +18,7 @@ import NotFound from "@/views/404.vue";
 
 import LayananIGD from "@/views/Layanan/IGD.vue";
 import RawatJalan from "@/views/layanan/RawatJalan.vue";
+import LayanLab from "@/views/layanan/Laborat.vue";
 // import rawatinap from "@/views/layanan/rawatinap.vue";
 // import farmasi from "@/views/layanan/farmasi.vue";
 // import radiologi from "@/views/layanan/radiologi.vue";
@@ -72,12 +73,17 @@ const router = createRouter({
     {
       path: "/layanan-igd",
       name: "layanan-igd",
-      component: LayananIGD
+      component: LayananIGD,
     },
     {
       path: "/layanan-rawat-jalan",
       name: "layanan-rawat-jalan",
-      component: RawatJalan
+      component: RawatJalan,
+    },
+    {
+      path: "/layanan-laboratorium",
+      name: "layanan-laboratorium",
+      component: LayanLab,
     },
     {
       path: "/dokter",
