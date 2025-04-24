@@ -148,7 +148,7 @@
 </template>
 
 <script>
-import mainImage from "@/assets/images/main_image.png";
+import mainImage from "@/assets/images/main_image.webp";
 import Button from "@/components/inspira-ui/InteractiveHoverButton.vue";
 import NumberTicker from "@/components/inspira-ui/NumberTicker.vue";
 import Gallery from "@/components/inspira-ui/ExpandableGallery.vue";
