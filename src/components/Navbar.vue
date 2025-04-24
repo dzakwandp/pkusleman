@@ -168,7 +168,7 @@ export default {
     async getLayanan() {
       try {
         const layan = await axios.get(
-          "http://apiweb.pkusleman.com/api/layanan"
+          "https://apiweb.pkusleman.com/api/layanan"
         );
         this.links[1].child.push(
           ...layan.data.map((item) => ({
