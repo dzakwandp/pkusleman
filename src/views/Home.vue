@@ -19,7 +19,7 @@
       </div>
     </div>
     <Blur :delay="0.2" :duration="0.75" class="flex mx-auto -mt-20">
-      <RouterLink v-for="link in mainMenu" :key="index" :to="link.link">
+      <RouterLink v-for="link in mainMenu" :key="link.index" :to="link.link">
         <Button
           class="rounded-lg w-52 mx-5"
           :text="link.text"
@@ -105,7 +105,7 @@
       <div class="flex w-2/3 pl-20 items-center">
         <Testimonial
           :testimonials="testimoni"
-          autoplay
+          :autoplay="true"
           :duration="10000"></Testimonial>
       </div>
       <div

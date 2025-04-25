@@ -877,6 +877,11 @@ follow-redirects@^1.15.6:
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.9.tgz#a604fa10e443bf98ca94228d9eebcc2e8a2c8ee1"
   integrity sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ==
 
+font-awesome-animation@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/font-awesome-animation/-/font-awesome-animation-1.1.1.tgz#fa7e685c163034d59a22b565af1d848d3f7866b6"
+  integrity sha512-WHl4zhyb0LeqT+v2JClv5yNZ+63e2Mbbu+9ycL3FGVHtZA8zn4iaMBxA6AgcJySLlfdjuTEA0lBZBW2CE1cwpQ==
+
 foreground-child@^3.1.0:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/foreground-child/-/foreground-child-3.3.1.tgz#32e8e9ed1b68a3497befb9ac2b6adf92a638576f"

@@ -1,9 +1,9 @@
 <template>
   <div class="flex flex-col">
     <div
-      class="flex h-max px-20 py-10 gap-10 bg-gradient-to-b from-white to-gray-400">
-      <div class="flex flex-col w-1/4 gap-4">
-        <img :src="Logo" class="w-9/12" />
+      class="flex flex-col md:flex-row h-max px-10 md:px-20 py-10 mt-10 md:mt-0 gap-10 bg-gradient-to-b from-white to-gray-400">
+      <div class="flex flex-col md:w-1/4 gap-4">
+        <img :src="Logo" class="w-full md:w-9/12" />
         <div
           v-for="item in footerData"
           :key="item.index"
@@ -14,8 +14,8 @@
           <p>{{ item.text }}</p>
         </div>
       </div>
-      <div class="flex flex-col w-1/4">
-        <p class="text-3xl mb-8">Hubungi Kami</p>
+      <div class="flex flex-col md:w-1/4">
+        <p class="text-3xl mb-2 md:mb-8">Hubungi Kami</p>
         <div
           v-for="item in hubungiKami"
           :key="item.index"
@@ -28,8 +28,8 @@
           </a>
         </div>
       </div>
-      <div class="flex flex-col w-1/4">
-        <p class="text-3xl mb-8">Tentang Kami</p>
+      <div class="flex flex-col md:w-1/4">
+        <p class="text-3xl mb-2 md:mb-8">Tentang Kami</p>
         <div
           v-for="item in tentangKami"
           :key="item.index"
@@ -42,8 +42,8 @@
           </a>
         </div>
       </div>
-      <div class="flex flex-col w-1/4">
-        <p class="text-3xl mb-8">Quick Link</p>
+      <div class="flex flex-col md:w-1/4">
+        <p class="text-3xl mb-2 md:mb-8">Quick Link</p>
         <div
           v-for="item in quickLink"
           :key="item.index"

@@ -2,7 +2,7 @@
   <div class="flex flex-col top-0 sticky z-50">
     <!-- top navbar -->
     <div
-      class="flex justify-between items-center h-10 w-full px-20 bg-primary-green">
+      class="hidden md:flex justify-between items-center h-10 w-full md:px-20 bg-primary-green">
       <div class="flex gap-3 items-center">
         <a
           v-for="item in socials"
@@ -49,12 +49,22 @@
     </div>
     <!-- main navbar -->
     <div
-      class="flex justify-between items-center h-16 w-full px-20 border-b-[1px] bg-white border-b-gray-300">
+      class="flex justify-between items-center h-16 w-full px-5 md:px-20 border-b-[1px] bg-white border-b-gray-300">
       <img
         :src="Logo"
         class="h-full py-2 cursor-pointer"
         @click="this.$router.push('/')" />
-      <nav class="flex items-center h-full">
+      <!-- Menu Button (Visible on Mobile) -->
+      <button @click="mobileIsOpen = !mobileIsOpen" class="md:hidden">
+        <Transition name="rotate-fade" mode="out-in">
+          <font-awesome-icon
+            :key="mobileIsOpen"
+            :icon="mobileIsOpen ? ['fas', 'xmark'] : ['fas', 'bars']"
+            class="text-2xl text-primary-green" />
+        </Transition>
+      </button>
+      <!-- desktop nav -->
+      <nav class="hidden md:flex items-center h-full">
         <ul class="flex font-medium text-gray-800 space-x-10 h-full">
           <li
             v-for="link in links"
@@ -91,16 +101,29 @@
           </li>
         </ul>
       </nav>
+      <!-- Mobile Menu Overlay -->
     </div>
   </div>
+  <Transition name="slide-down">
+    <div
+      v-if="mobileIsOpen"
+      class="fixed inset-0 bg-white z-10 flex flex-col items-center justify-center gap-6 p-8">
+      <a href="#" class="text-xl font-semibold">Home</a>
+      <a href="#" class="text-xl font-semibold">About</a>
+      <a href="#" class="text-xl font-semibold">Services</a>
+      <a href="#" class="text-xl font-semibold">Contact</a>
+    </div>
+  </Transition>
 </template>
 
 <script>
+import "font-awesome-animation/css/font-awesome-animation.min.css";
 import Logo from "@/assets/images/logo.png";
 import axios from "axios";
 export default {
   data() {
     return {
+      mobileIsOpen: false,
       Logo: Logo,
       links: [
         {
@@ -187,4 +210,53 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.rotate-fade-enter-active {
+  animation: spin-in 0.4s ease forwards;
+}
+
+.rotate-fade-leave-active {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+@keyframes spin-in {
+  from {
+    opacity: 0;
+    transform: rotate(-180deg) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+.slide-down-enter-active {
+  animation: slideIn 0.4s ease-out forwards;
+}
+.slide-down-leave-active {
+  animation: slideOut 0.4s ease-in forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+</style>

@@ -17,6 +17,7 @@
     "@vueuse/core": "^13.0.0",
     "aos": "^2.3.4",
     "axios": "^1.8.4",
+    "font-awesome-animation": "^1.1.1",
     "moment": "^2.30.1",
     "motion-v": "^0.13.0",
     "v-viewer": "^3.0.21",
