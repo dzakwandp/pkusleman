@@ -133,8 +133,8 @@
         Kami telah berkerjasama dengan beberapa mitra dan asuransi untuk
         memastikan Anda mendapatkan layanan kesehatan yang mudah dan nyaman.
       </p>
-      <div class="grid grid-cols-4 gap-2 items-center md:hidden">
-        <img v-for="item in mitra" :key="item.index" :src="'https://apiweb.pkusleman.com' + item.image">
+      <div class="flex flex-wrap gap-2 items-center justify-center md:hidden">
+        <img v-for="item in mitra" :key="item.index" :src="'https://apiweb.pkusleman.com' + item.image" class="w-1/5">
       </div>
       <Marquee pause-on-hover class="[--duration:20s] hidden md:flex">
         <img

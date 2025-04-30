@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col px-20 mt-10 min-h-screen">
+  <div class="flex flex-col px-4 md:px-20 mt-10 min-h-screen">
     <p class="text-4xl text-center text-gray-800">Para Dokter Kami.</p>
     <p class="text-gray-800 text-center">
       Para dokter kami yang selalu siaga dan berusaha memberikan pelayanan
@@ -15,12 +15,12 @@
       </a>
     </p>
     <div class="flex flex-col gap-6">
-      <div class="flex gap-4 justify-center sticky top-[6.5rem] z-10 bg-white py-2">
+      <div class="flex gap-4 md:justify-center overflow-auto sticky top-[4rem] md:top-[6.5rem] z-10 bg-white p-2">
         <div
           v-for="item in spesialisasi"
           :key="item.index"
           @click="toggleFilter(item.text)"
-          class="p-2 cursor-pointer outline outline-1 outline-primary-green rounded-xl text-sm hover:bg-primary-green hover:text-white transition"
+          class="text-nowrap p-2 cursor-pointer outline outline-1 outline-primary-green rounded-xl text-xs md:text-sm hover:bg-primary-green hover:text-white transition"
           :class="{
             'bg-primary-green text-white': selectedFilters.includes(item.text),
             'bg-white text-gray-800': !selectedFilters.includes(item.text),
@@ -32,14 +32,14 @@
         <div
           v-for="spesial in filteredSpesialisasi"
           :key="spesial.index"
-          class="flex gap-6">
-          <div class="flex flex-col w-1/4">
+          class="flex flex-col md:flex-row mb-8 md:mb-0 md:gap-6">
+          <div class="flex flex-col md:w-1/4">
             <p class="text-gray-800 text-3xl">{{ spesial.text }}</p>
             <div class="w-full h-[2px] bg-primary-green"></div>
           </div>
-          <div class="flex flex-wrap w-3/4">
+          <div class="flex flex-wrap justify-center md:justify-start md:w-3/4">
             <div v-for="item in dokter" :key="item.index">
-              <FlipCard v-if="spesial.text === item.group" class="mr-6 mt-6">
+              <FlipCard v-if="spesial.text === item.group" class="md:mr-6 mt-6">
                 <template #default>
                   <div
                     class="flex h-full items-end"
