@@ -107,20 +107,64 @@
   <Transition name="slide-down">
     <div
       v-if="mobileIsOpen"
-      class="fixed inset-0 bg-white z-10 flex flex-col items-center justify-center gap-6 p-8">
-      <a href="#" class="text-xl font-semibold">Home</a>
-      <a href="#" class="text-xl font-semibold">About</a>
-      <a href="#" class="text-xl font-semibold">Services</a>
-      <a href="#" class="text-xl font-semibold">Contact</a>
+      class="fixed inset-0 bg-white z-20 flex flex-col items-center justify-between py-20">
+      <Accordion class="flex flex-col w-full bg-white">
+        <RouterLink
+          to="/"
+          class="border-b-2 px-3 py-3 text-primary-green font-bold mb-2"
+          @click="mobileIsOpen = !mobileIsOpen">
+          Beranda
+        </RouterLink>
+        <AccordionItem
+          v-for="item in links"
+          :key="item.index"
+          class="border-b-2">
+          <template #accordion-trigger>
+            <div class="flex items-center gap-2">
+              <p class="font-bold">{{ item.text }}</p>
+            </div>
+          </template>
+          <template #accordion-content>
+            <div
+              class="flex flex-col p-4 gap-3 font-semibold text-primary-green">
+              <RouterLink
+                v-for="items in item.child"
+                :to="items.location"
+                @click="mobileIsOpen = !mobileIsOpen">
+                {{ items.text }}
+              </RouterLink>
+            </div>
+          </template>
+        </AccordionItem>
+      </Accordion>
+      <div class="flex flex-col text-primary-green w-full items-center gap-2">
+        <p>PKU Muhammadiyah Sleman | 2025</p>
+        <div class="flex gap-2 text-3xl">
+          <a
+            v-for="item in socials"
+            :key="item.index"
+            :href="item.location"
+            target="_blank"
+            @click="mobileIsOpen = !mobileIsOpen">
+            <font-awesome-icon :icon="item.icons" />
+          </a>
+        </div>
+      </div>
     </div>
   </Transition>
 </template>
 
 <script>
-import "font-awesome-animation/css/font-awesome-animation.min.css";
+import Accordion from "@/components/accordion/Accordion.vue";
+import AccordionItem from "@/components/accordion/AccordionItemNavbar.vue";
 import Logo from "@/assets/images/logo.png";
 import axios from "axios";
+import { RouterLink } from "vue-router";
 export default {
+  components: {
+    Accordion,
+    AccordionItem,
+  },
   data() {
     return {
       mobileIsOpen: false,
