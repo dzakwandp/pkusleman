@@ -31,8 +31,8 @@
       </svg>
     </div>
     <div
-      class="flex items-center justify-center absolute left-[18%] top-[40%] size-1 scale-100 rounded-lg bg-white transition-all duration-300 group-hover:left-0 group-hover:top-0 group-hover:size-full group-hover:scale-[1.8] group-hover:bg-primary-green">
-      <font-awesome-icon :icon="icon" class="text-primary-green size-6"/>
+      class="flex items-center justify-center absolute left-[18%] top-[40%] size-0 scale-100 rounded-lg bg-white transition-all duration-300 group-hover:left-0 group-hover:top-0 group-hover:size-full group-hover:scale-[1.8] group-hover:bg-primary-green">
+      <font-awesome-icon :icon="icon" class="text-primary-green size-0 md:size-6"/>
     </div>
   </button>
 </template>

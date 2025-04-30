@@ -1,49 +1,54 @@
 <template>
-  <div class="flex flex-col -mt-24">
+  <div class="flex flex-col md:-mt-24">
     <div
-      class="flex h-screen bg-gray-300"
-      :style="{ backgroundImage: `url(${mainImage})` }"
-      style="background-size: cover">
+      class="flex h-[40vh] md:h-screen bg-gray-300 bg-cover"
+      :style="{ backgroundImage: `url(${mainImage})` }">
       <div
-        class="flex flex-col self-center ml-20"
+        class="flex flex-col self-center ml-5 md:ml-20"
         data-aos="fade-up"
         data-aos-duration="1000">
-        <p class="text-gray-800 font-bold">Selamat Datang di</p>
-        <p class="text-gray-800 text-5xl text-wrap w-1/2">
+        <p class="text-gray-800 font-bold text-sm md:text-base">
+          Selamat Datang di
+        </p>
+        <p class="text-gray-800 text-2xl md:text-5xl text-wrap w-1/2">
           Rumah Sakit PKU Muhammadiyah Sleman
         </p>
-        <p class="text-gray-800 text-wrap w-1/2">
+        <p class="hidden md:block text-gray-800 text-wrap w-1/2">
           Kami berkomitmen memberikan layanan profesional yang islami dengan
           kenyamanan menjadi prioritas.
         </p>
       </div>
     </div>
-    <Blur :delay="0.2" :duration="0.75" class="flex mx-auto -mt-20">
+    <Blur :delay="0.2" :duration="0.75" class="flex mx-auto mt-5 md:-mt-20">
       <RouterLink v-for="link in mainMenu" :key="link.index" :to="link.link">
         <Button
-          class="rounded-lg w-52 mx-5"
+          class="rounded-lg w-28 md:w-52 mx-2 md:mx-5 text-xs md:text-base"
           :text="link.text"
           :icon="link.icon"></Button>
       </RouterLink>
     </Blur>
-    <div class="flex h-20 mt-9 bg-gray-300">
+    <div class="flex h-24 md:h-20 mt-9 bg-gray-300">
       <div
         v-for="item in counts"
         :key="item.index"
-        class="flex items-center justify-center w-1/4">
-        <NumberTicker
-          class="text-primary-green text-5xl"
-          :value="item.text"
-          :delay="500"
-          :duration="2000"
-          :decimalPlaces="0" />
-        <p class="text-primary-green text-5xl mr-2">{{ item.plus }}</p>
-        <p class="text-gray-800 font-semibold">{{ item.subText }}</p>
+        class="flex flex-col md:flex-row items-center justify-center w-1/4">
+        <div class="flex">
+          <NumberTicker
+            class="text-primary-green text-2xl md:text-5xl"
+            :value="item.text"
+            :delay="500"
+            :duration="2000"
+            :decimalPlaces="0" />
+          <p class="text-primary-green text-2xl md:text-5xl md:mr-2">
+            {{ item.plus }}
+          </p>
+        </div>
+        <p class="text-gray-800 font-semibold text-center">{{ item.subText }}</p>
       </div>
     </div>
-    <div class="flex h-[90vh]">
+    <div class="flex flex-col md:flex-row h-[50vh] md:h-[90vh] mt-10 md:mt-0 gap-8 md:gap-0">
       <div
-        class="flex flex-col justify-center items-start w-1/3 px-20"
+        class="flex flex-col justify-center items-start md:w-1/3 px-4 md:px-20"
         data-aos="fade-up"
         data-aos-duration="1000">
         <p class="text-4xl text-gray-800">Dengan Setulus Hati Melayani.</p>
@@ -52,13 +57,13 @@
           dengan mengutamakan kenyamanan Anda.
         </p>
       </div>
-      <div class="flex items-center w-2/3 pr-20">
+      <div class="flex items-center md:w-2/3 px-4 md:pr-20">
         <Gallery :images="images" />
       </div>
     </div>
-    <div class="flex h-max py-10">
+    <div class="flex flex-col-reverse md:flex-row h-[85vh] md:h-max md:py-10 mt-10 md:mt-0 gap-8 md:gap-0">
       <div
-        class="grid grid-cols-4 w-2/3 justify-center items-center pl-20 gap-2">
+        class="grid grid-cols-2 md:grid-cols-4 md:w-2/3 justify-center items-center px-4 md:pl-20 gap-2">
         <CardHover
           v-for="item in layanan"
           :key="item.index"
@@ -68,7 +73,7 @@
         </CardHover>
       </div>
       <div
-        class="flex flex-col w-1/3 justify-center items-start px-20"
+        class="flex flex-col md:w-1/3 justify-center items-start px-4 md:px-20"
         data-aos="fade-up"
         data-aos-duration="1000">
         <p class="text-4xl text-gray-800">Layanan Lengkap.</p>
@@ -82,9 +87,9 @@
           @click="this.$router.push('/layanan')"></Button>
       </div>
     </div>
-    <div class="flex h-[90vh] items-center bg-gray-300">
+    <div class="flex flex-col md:flex-row h-max md:h-[90vh] items-center bg-gray-300 mt-10 pt-10 md:mt-0 md:pt-0">
       <div
-        class="flex flex-col w-1/3 pl-20"
+        class="flex flex-col md:w-1/3 px-4 md:pl-20"
         data-aos="fade-up"
         data-aos-duration="1000">
         <p class="text-4xl text-gray-800">Kami Hadir Untuk Anda.</p>
@@ -97,19 +102,19 @@
           class="rounded-xl w-48 text-gray-800 mt-2"
           @click="this.$router.push('/dokter')"></Button>
       </div>
-      <div class="w-2/3 px-20">
+      <div class="md:w-2/3 px-4 md:px-20 mt-10 md:mt-0">
         <img :src="doctor" class="" />
       </div>
     </div>
-    <div v-if="testimoniLoad" class="flex h-[90vh] py-10">
-      <div class="flex w-2/3 pl-20 items-center">
+    <div v-if="testimoniLoad" class="flex flex-col-reverse md:flex-row h-max md:h-[90vh] py-10">
+      <div class="flex md:w-2/3 px-10 md:pl-20 items-center">
         <Testimonial
           :testimonials="testimoni"
           :autoplay="true"
           :duration="10000"></Testimonial>
       </div>
       <div
-        class="flex flex-col justify-center w-1/3 px-20"
+        class="flex flex-col justify-center md:w-1/3 px-4 md:px-20"
         data-aos="fade-up"
         data-aos-duration="1000">
         <p class="text-4xl text-gray-800">Testimoni.</p>
@@ -122,20 +127,23 @@
         >
       </div>
     </div>
-    <div class="flex flex-col h-max pt-10 pb-20 px-20 gap-4 items-center">
+    <div class="flex flex-col h-max md:pt-10 pb-20 px-4 md:px-20 gap-4 items-center">
       <p class="text-4xl text-gray-800">Rekanan dan Mitra Asuransi.</p>
       <p class="text-gray-800">
         Kami telah berkerjasama dengan beberapa mitra dan asuransi untuk
         memastikan Anda mendapatkan layanan kesehatan yang mudah dan nyaman.
       </p>
-      <Marquee pause-on-hover class="[--duration:20s]">
+      <div class="grid grid-cols-4 gap-2 items-center md:hidden">
+        <img v-for="item in mitra" :key="item.index" :src="'https://apiweb.pkusleman.com' + item.image">
+      </div>
+      <Marquee pause-on-hover class="[--duration:20s] hidden md:flex">
         <img
           v-for="item in mitra"
           :key="item.index"
           :src="'https://apiweb.pkusleman.com' + item.image"
           class="h-12 mx-2" />
       </Marquee>
-      <Marquee pause-on-hover reverse class="[--duration:20s]">
+      <Marquee pause-on-hover reverse class="[--duration:20s] hidden md:flex">
         <img
           v-for="item in mitra"
           :key="item.index"

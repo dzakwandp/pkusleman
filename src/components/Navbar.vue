@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col top-0 sticky z-50">
+  <div class="flex flex-col top-0 sticky" style="z-index: 60;">
     <!-- top navbar -->
     <div
       class="hidden md:flex justify-between items-center h-10 w-full md:px-20 bg-primary-green">
@@ -107,7 +107,7 @@
   <Transition name="slide-down">
     <div
       v-if="mobileIsOpen"
-      class="fixed inset-0 bg-white z-20 flex flex-col items-center justify-between py-20">
+      class="fixed inset-0 bg-white z-50 flex flex-col items-center justify-between py-20">
       <Accordion class="flex flex-col w-full bg-white">
         <RouterLink
           to="/"
