@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col px-20 mt-10 min-h-screen">
+  <div class="flex flex-col px-4 md:px-20 mt-10 min-h-screen">
     <div class="flex flex-col w-max mx-auto gap-2 mb-10">
       <p class="text-4xl text-center text-gray-800">Layanan Rawat Jalan</p>
       <div class="h-[2px] bg-primary-green w-full" />
