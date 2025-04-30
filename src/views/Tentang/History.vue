@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-col px-20 mb-20">
-    <div class="h-[60vh] mt-20">
+  <div class="flex flex-col px-4 md:px-20 mb-20">
+    <div class="md:h-[60vh] mt-20">
       <ImageSlider :images="images" autoplay class="rounded-xl" />
     </div>
     <div class="flex flex-col mt-10 text-center w-max mx-auto gap-2">
@@ -14,7 +14,7 @@
         :key="item.id + 'template'"
         #[item.id]>
         <p
-          className="text-gray-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
+          className="text-gray-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8 ml-16 md:ml-0">
           {{ item.text }}
         </p>
       </template>
