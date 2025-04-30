@@ -1,10 +1,10 @@
 <template>
-  <div class="flex flex-col px-20 mt-10 min-h-screen">
+  <div class="flex flex-col px-4 md:px-20 mt-10 min-h-screen">
     <div class="flex flex-col w-max mx-auto gap-2">
       <p class="text-4xl text-center text-gray-800">Layanan Laboratorium</p>
       <div class="h-[2px] bg-primary-green w-full" />
     </div>
-    <ExpandGallery class="w-2/3 h-64 mx-auto mt-10" :images="image" />
+    <ExpandGallery class="w-11/12 md:w-2/3 h-64 mx-auto mt-10" :images="image" />
     <div v-if="loaded">
       <div class="flex flex-col rounded-lg shadow-lg mt-10">
         <p class="bg-primary-green rounded-t-lg text-white font-semibold p-2">
