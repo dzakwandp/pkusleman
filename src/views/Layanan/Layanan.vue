@@ -1,11 +1,12 @@
 <template>
-  <div class="flex flex-col px-20 mt-10 min-h-screen">
+  <div class="flex flex-col p-4 md:px-20 mt-10 min-h-screen">
     <p class="text-4xl text-center text-gray-800">Layanan Kami.</p>
     <p class="text-gray-800 text-center">
       Seluruh layanan kami guna menunjang kesehatan Anda.
     </p>
     <div class="flex flex-wrap justify-center mt-10 gap-8">
       <div v-for="item in layanan" :key="item.id">
+        <p class="flex md:hidden text-xl font-semibold">{{ item.nama_layanan }}</p>
         <CardHover
           :imageUrl="item.image"
           class="size-52 2xl:size-80 aspect-square cursor-pointer"
