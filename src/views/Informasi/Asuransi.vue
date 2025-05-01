@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col px-20 mt-10 min-h-screen">
+  <div class="flex flex-col px-4 md:px-20 mt-10 min-h-screen">
     <p class="text-4xl text-center text-gray-800">Asuransi dan Rekanan.</p>
     <p class="text-gray-800 text-center">
       Kami telah melakukan kerjasama dengan beberapa rekanan dan asuransi demi
@@ -9,7 +9,7 @@
       class="outline outline-1 rounded-sm p-1 text-sm outline-gray-300 my-10 focus:outline-primary-green"
       placeholder="Cari Asuransi/Rekanan"
       v-model="asurSearch" />
-    <div class="grid grid-cols-7 2xl:grid-cols-8 gap-4">
+    <div class="grid grid-cols-3 md:grid-cols-7 2xl:grid-cols-8 gap-4">
       <a
         v-for="item in filteredMitra"
         :key="item.index"
