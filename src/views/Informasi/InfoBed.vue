@@ -1,11 +1,11 @@
 <template>
-  <div class="flex flex-col px-20 mb-10 min-h-screen">
+  <div class="flex flex-col px-4 md:px-20 mb-10 min-h-screen">
     <div class="flex flex-col mt-10 w-max mx-auto gap-2">
-      <p class="text-4xl text-gray-800">Informasi Tempat Tidur</p>
+      <p class="text-3xl md:text-4xl text-gray-800">Informasi Tempat Tidur</p>
       <div class="h-[3px] bg-primary-green"></div>
     </div>
     <div
-      class="flex gap-4 justify-center sticky top-[6.5rem] z-10 bg-white py-2 mt-10">
+      class="flex gap-4 md:justify-center sticky top-[4rem] md:top-[6.5rem] z-10 bg-white py-2 mt-10 px-2 md:px-0 overflow-auto text-nowrap">
       <div
         v-for="item in kelas"
         :key="item.index"
@@ -18,7 +18,7 @@
         {{ item.text }}
       </div>
     </div>
-    <div class="grid grid-cols-4 gap-4 w-full mt-10">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 w-full mt-10">
       <div
         v-for="item in filteredTTidur"
         :key="item.index"

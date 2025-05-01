@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen">
-    <img :src="wip" class="h-[80vh] mx-auto">
+    <img :src="wip" class="md:h-[80vh] mx-auto aspect-square">
   </div>
 </template>
 
