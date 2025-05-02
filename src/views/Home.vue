@@ -43,10 +43,13 @@
             {{ item.plus }}
           </p>
         </div>
-        <p class="text-gray-800 font-semibold text-center">{{ item.subText }}</p>
+        <p class="text-gray-800 font-semibold text-center">
+          {{ item.subText }}
+        </p>
       </div>
     </div>
-    <div class="flex flex-col md:flex-row h-[50vh] md:h-[90vh] mt-10 md:mt-0 gap-8 md:gap-0">
+    <div
+      class="flex flex-col md:flex-row h-max md:h-[90vh] mt-10 md:mt-0 gap-8 md:gap-0">
       <div
         class="flex flex-col justify-center items-start md:w-1/3 px-4 md:px-20"
         data-aos="fade-up"
@@ -61,7 +64,8 @@
         <Gallery :images="images" />
       </div>
     </div>
-    <div class="flex flex-col-reverse md:flex-row h-[85vh] md:h-max md:py-10 mt-10 md:mt-0 gap-8 md:gap-0">
+    <div
+      class="flex flex-col-reverse md:flex-row h-max md:py-10 mt-10 md:mt-0 gap-8 md:gap-0">
       <div
         class="grid grid-cols-2 md:grid-cols-4 md:w-2/3 justify-center items-center px-4 md:pl-20 gap-2">
         <CardHover
@@ -87,7 +91,8 @@
           @click="this.$router.push('/layanan')"></Button>
       </div>
     </div>
-    <div class="flex flex-col md:flex-row h-max md:h-[90vh] items-center bg-gray-300 mt-10 pt-10 md:mt-0 md:pt-0">
+    <div
+      class="flex flex-col md:flex-row h-max md:h-[90vh] items-center bg-gray-300 mt-10 pt-10 md:mt-0 md:pt-0">
       <div
         class="flex flex-col md:w-1/3 px-4 md:pl-20"
         data-aos="fade-up"
@@ -106,7 +111,9 @@
         <img :src="doctor" class="" />
       </div>
     </div>
-    <div v-if="testimoniLoad" class="flex flex-col-reverse md:flex-row h-max md:h-[90vh] py-10">
+    <div
+      v-if="testimoniLoad"
+      class="flex flex-col-reverse md:flex-row h-max md:h-[90vh] py-10">
       <div class="flex md:w-2/3 px-10 md:pl-20 items-center">
         <Testimonial
           :testimonials="testimoni"
@@ -127,14 +134,19 @@
         >
       </div>
     </div>
-    <div class="flex flex-col h-max md:pt-10 pb-20 px-4 md:px-20 gap-4 items-center">
+    <div
+      class="flex flex-col h-max md:pt-10 pb-20 px-4 md:px-20 gap-4 items-center">
       <p class="text-4xl text-gray-800">Rekanan dan Mitra Asuransi.</p>
       <p class="text-gray-800">
         Kami telah berkerjasama dengan beberapa mitra dan asuransi untuk
         memastikan Anda mendapatkan layanan kesehatan yang mudah dan nyaman.
       </p>
       <div class="flex flex-wrap gap-2 items-center justify-center md:hidden">
-        <img v-for="item in mitra" :key="item.index" :src="'https://apiweb.pkusleman.com' + item.image" class="w-1/5">
+        <img
+          v-for="item in mitra"
+          :key="item.index"
+          :src="'https://apiweb.pkusleman.com' + item.image"
+          class="w-1/5" />
       </div>
       <Marquee pause-on-hover class="[--duration:20s] hidden md:flex">
         <img
@@ -150,7 +162,10 @@
           :src="'https://apiweb.pkusleman.com' + item.image"
           class="h-12 mx-2" />
       </Marquee>
-      <Button class="w-48 rounded-xl text-gray-800" text="Selengkapnya" />
+      <Button
+        class="w-48 rounded-xl text-gray-800"
+        text="Selengkapnya"
+        @click="this.$router.push('/layanan')" />
     </div>
   </div>
 </template>
