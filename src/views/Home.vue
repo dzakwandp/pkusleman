@@ -88,7 +88,7 @@
         <Button
           text="Selengkapnya"
           class="rounded-xl w-48 text-gray-800 mt-2"
-          @click="this.$router.push('/layanan')"></Button>
+          @click="this.$router.push('/asuransi')"></Button>
       </div>
     </div>
     <div
