@@ -18,10 +18,10 @@
         class="flex flex-col shadow-lg items-center p-2 h-40 2xl:h-52 rounded-xl hover:bg-gray-300 transition duration-500">
         <div class="flex flex-1 items-center text-gray-800">
           <img
-            :src="'https://apiweb.pkusleman.com' + item.image"
+            :src="'https://apiweb.pkusleman.com' + item.gambar"
             class="w-24 2xl:w-32 h-max" />
         </div>
-        <p class="text-xs text-center">{{ item.name }}</p>
+        <p class="text-xs text-center">{{ item.nama }}</p>
       </a>
     </div>
   </div>
