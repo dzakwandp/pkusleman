@@ -148,20 +148,22 @@
           :src="'https://apiweb.pkusleman.com' + item.gambar"
           class="w-1/5" />
       </div>
-      <Marquee pause-on-hover class="[--duration:20s] hidden md:flex">
-        <img
-          v-for="item in mitra"
-          :key="item.index"
-          :src="'https://apiweb.pkusleman.com' + item.gambar"
-          class="h-12 mx-2" />
-      </Marquee>
-      <Marquee pause-on-hover reverse class="[--duration:20s] hidden md:flex">
-        <img
-          v-for="item in mitra"
-          :key="item.index"
-          :src="'https://apiweb.pkusleman.com' + item.gambar"
-          class="h-12 mx-2" />
-      </Marquee>
+      <div class="w-full">
+        <Marquee pause-on-hover class="[--duration:20s] hidden md:flex">
+          <img
+            v-for="item in mitra"
+            :key="item.index"
+            :src="'https://apiweb.pkusleman.com' + item.gambar"
+            class="h-12 mx-2" />
+        </Marquee>
+        <Marquee pause-on-hover reverse class="[--duration:20s] hidden md:flex">
+          <img
+            v-for="item in mitra"
+            :key="item.index"
+            :src="'https://apiweb.pkusleman.com' + item.gambar"
+            class="h-12 mx-2" />
+        </Marquee>
+      </div>
       <Button
         class="w-48 rounded-xl text-gray-800"
         text="Selengkapnya"

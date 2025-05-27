@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col px-4 md:px-20 mt-10 min-h-screen">
+  <div class="flex flex-col px-4 md:px-20 my-10 min-h-screen">
     <p class="text-4xl text-center text-gray-800">Asuransi dan Rekanan.</p>
     <p class="text-gray-800 text-center">
       Kami telah melakukan kerjasama dengan beberapa rekanan dan asuransi demi
@@ -58,7 +58,7 @@ export default {
           this.filteredMitra = this.mitra;
         } else {
           this.filteredMitra = this.mitra.filter((asur) =>
-            asur.name.toLowerCase().includes(this.asurSearch.toLowerCase())
+            asur.nama.toLowerCase().includes(this.asurSearch.toLowerCase())
           );
         }
       },
