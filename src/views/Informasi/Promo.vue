@@ -39,7 +39,7 @@ export default defineComponent({
         const promo = await axios.get("https://apiweb.pkusleman.com/api/promo");
         this.promo = promo.data.map((data) => ({
           ...data,
-          image: `https://apiweb.pkusleman.com${data.image}`,
+          image: `https://apiweb.pkusleman.com${data.gambar}`,
         }));
         console.log(this.images);
       } catch (err) {
