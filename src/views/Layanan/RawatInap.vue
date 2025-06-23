@@ -19,7 +19,7 @@
         <template #accordion-content>
           <div class="flex flex-col p-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div class="flex flex-col">
+              <div class="flex flex-col gap-3">
                 <img
                   v-for="item in JSON.parse(item.gambar)"
                   :key="item.index"
@@ -35,9 +35,10 @@
                 class="bg-primary-green rounded-t-lg text-white font-semibold p-2">
                 Fasilitas {{ item.nama_poli }}
               </p>
-              <div class="flex flex-col md:flex-row my-4 md:my-0 gap-4 md:gap-0">
+              <div
+                class="flex flex-col md:flex-row my-4 md:my-0 gap-4 md:gap-0">
                 <div
-                  class="flex flex-col md:w-1/2 text-wrap gap-2 p-2 list-class"
+                  class="flex flex-col md:w-1/2 text-wrap gap-2 p-2"
                   :class="getFasilitasClass(item.fasilitas)"
                   v-html="getFasilitas(item.fasilitas)" />
                 <div class="flex flex-col md:w-1/2 items-center justify-center">
@@ -107,7 +108,7 @@ export default {
       if (fasil === null) {
         return "-";
       } else {
-        return fasil;
+        return fasil.replace("<ul>", "<ul id=list>");
       }
     },
     getFasilitasClass(fasil) {
@@ -124,8 +125,18 @@ export default {
 };
 </script>
 
-<style scoped>
-.list-class {
-  list-style-image: url(../../assets/icons/Check.svg);
+<style>
+ul#list {
+  padding: 0;
+  margin: 0;
+}
+
+ul#list li {
+  background: url("../../assets/icons/Check.svg")
+    2px 4px no-repeat;
+  display: list-item;
+  padding: 0px 0px 3px 20px;
+  overflow: visible;
+  list-style: none;
 }
 </style>
