@@ -1,10 +1,10 @@
 <template>
-  <div class="flex flex-col px-20 mt-10 min-h-screen">
+  <div class="flex flex-col px-4 md:px-20 mt-10 min-h-screen">
     <p class="text-4xl text-center text-gray-800">Promo Layanan.</p>
     <p class="text-gray-800 text-center">
       Berbagai promo layanan menarik untuk kebutuhan kesehatan anda.
     </p>
-    <div class="grid grid-cols-5 mt-10">
+    <div class="grid grid-cols-2 md:grid-cols-5 mt-10 gap-2">
       <div
         v-for="item in promo"
         :key="item.index"
