@@ -18,7 +18,15 @@
         </template>
         <template #accordion-content>
           <div class="flex flex-col p-4">
-            <div v-html="item.deskripsi" class="p-2" />
+            <div class="flex flex-col md:flex-row">
+              <div class="flex flex-col gap-2">
+                <img
+                  v-for="item in JSON.parse(item.gambar)"
+                  :src="'https://apiweb.pkusleman.com' + item"
+                  alt="" />
+              </div>
+              <div v-html="item.deskripsi" class="p-2" />
+            </div>
             <div class="flex flex-col rounded-lg shadow-xl mt-10">
               <p
                 class="bg-primary-green rounded-t-lg text-white font-semibold p-2">
@@ -63,15 +71,15 @@ export default {
       }
     },
     getFasilitas(fasil) {
-      if (fasil === null) {
+      if (fasil === "") {
         return "-";
       } else {
-        return fasil;
+        return fasil.replace("<ul>", "<ul id=list>");
       }
     },
     getFasilitasClass(fasil) {
-      if (fasil === null) {
-        return
+      if (fasil === "") {
+        return;
       } else {
         return "ml-10";
       }
@@ -83,8 +91,17 @@ export default {
 };
 </script>
 
-<style scoped>
-.list-class {
-  list-style-image: url(../../assets/icons/Check.svg);
+<style>
+ul#list {
+  padding: 0;
+  margin: 0;
+}
+
+ul#list li {
+  background: url("../../assets/icons/Check.svg") 2px 4px no-repeat;
+  display: list-item;
+  padding: 0px 0px 3px 20px;
+  overflow: visible;
+  list-style: none;
 }
 </style>
