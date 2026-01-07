@@ -1,18 +1,21 @@
 <template>
   <div
     class="mx-auto max-w-sm px-4 py-20 font-sans antialiased lg:px-12 md:max-w-4xl md:px-8">
-    <div class="relative grid grid-cols-1 gap-20 md:grid-cols-2">
+    <div
+      v-if="props.testimonials && props.testimonials.length"
+      class="relative grid grid-cols-1 gap-20 md:grid-cols-2">
       <div>
         <div class="relative h-80 w-full">
           <Motion
             v-for="(testimonial, index) in props.testimonials"
-            :key="testimonial.image"
+            :key="testimonial.id || index"
             as="div"
             :initial="{
               opacity: 0,
               scale: 0.9,
               z: -100,
               rotate: randomRotateY(),
+              y: [0],
             }"
             :animate="{
               opacity: isActive(index) ? 1 : 0.7,
@@ -20,13 +23,14 @@
               z: isActive(index) ? 0 : -100,
               rotate: isActive(index) ? 0 : randomRotateY(),
               zIndex: isActive(index) ? 40 : testimonials.length + 2 - index,
-              y: isActive(index) ? [0, -80, 0] : 0,
+              y: isActive(index) ? [0, -80, 0] : [0],
             }"
             :exit="{
               opacity: 0,
               scale: 0.9,
               z: 100,
               rotate: randomRotateY(),
+              y: [0],
             }"
             :transition="{
               duration: 0.4,
@@ -86,6 +90,11 @@
                 opacity: 1,
                 y: 0,
               }"
+              :exit="{
+                filter: 'blur(10px)',
+                opacity: 0,
+                y: 5,
+              }"
               :transition="{
                 duration: 0.2,
                 ease: 'easeInOut',
@@ -125,6 +134,7 @@ import avaMale from "@/assets/images/ava_male.jpg";
 import avaFemale from "@/assets/images/ava_female.jpg";
 
 interface Testimonial {
+  id: number;
   quote: string;
   name: string;
   designation: string;
@@ -148,20 +158,43 @@ const active = ref(0);
 const interval = ref<any>();
 
 const activeTestimonialQuote = computed(() => {
-  return props.testimonials[active.value].quote.split(" ");
+  if (!props.testimonials || props.testimonials.length === 0) return [];
+  const testimonial = props.testimonials[active.value];
+  return testimonial ? testimonial.quote.split(" ") : [];
 });
 
 onMounted(() => {
   if (props.autoplay) {
-    interval.value = setInterval(handleNext, props.duration);
+    startAutoplay();
+    document.addEventListener("visibilitychange", handleVisibilityChange);
   }
 });
 
 onUnmounted(() => {
-  if (!interval.value) {
-    clearInterval(interval.value);
-  }
+  stopAutoplay();
+  document.removeEventListener("visibilitychange", handleVisibilityChange);
 });
+
+function startAutoplay() {
+  if (!interval.value) {
+    interval.value = setInterval(handleNext, props.duration);
+  }
+}
+
+function stopAutoplay() {
+  if (interval.value) {
+    clearInterval(interval.value);
+    interval.value = null;
+  }
+}
+
+function handleVisibilityChange() {
+  if (document.hidden) {
+    stopAutoplay();
+  } else {
+    startAutoplay();
+  }
+}
 
 function getImage(gender: string) {
   if (gender === "male") {
@@ -172,10 +205,12 @@ function getImage(gender: string) {
 }
 
 function handleNext() {
+  if (!props.testimonials || props.testimonials.length === 0) return;
   active.value = (active.value + 1) % props.testimonials.length;
 }
 
 function handlePrev() {
+  if (!props.testimonials || props.testimonials.length === 0) return;
   active.value =
     (active.value - 1 + props.testimonials.length) % props.testimonials.length;
 }

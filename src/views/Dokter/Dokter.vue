@@ -15,17 +15,22 @@
       </a>
     </p>
     <div class="flex flex-col gap-6">
-      <div class="flex gap-4 md:justify-center overflow-auto sticky top-[4rem] md:top-[6.5rem] z-10 bg-white p-2">
-        <div
-          v-for="item in spesialisasi"
-          :key="item.index"
-          @click="toggleFilter(item.text)"
-          class="text-nowrap p-2 cursor-pointer outline outline-1 outline-primary-green rounded-xl text-xs md:text-sm hover:bg-primary-green hover:text-white transition"
-          :class="{
-            'bg-primary-green text-white': selectedFilters.includes(item.text),
-            'bg-white text-gray-800': !selectedFilters.includes(item.text),
-          }">
-          {{ item.text }}
+      <div
+        class="md:justify-center sticky top-[4rem] md:top-[6.5rem] z-10 bg-white">
+        <div class="flex gap-4 overflow-auto p-2">
+          <div
+            v-for="item in spesialisasi"
+            :key="item.index"
+            @click="toggleFilter(item.text)"
+            class="text-nowrap p-2 cursor-pointer outline outline-1 outline-primary-green rounded-xl text-xs md:text-sm hover:bg-primary-green hover:text-white transition"
+            :class="{
+              'bg-primary-green text-white': selectedFilters.includes(
+                item.text
+              ),
+              'bg-white text-gray-800': !selectedFilters.includes(item.text),
+            }">
+            {{ item.text }}
+          </div>
         </div>
       </div>
       <TransitionGroup name="fade" tag="div">
@@ -50,21 +55,24 @@
                 </template>
                 <template #back>
                   <div>
-                    <p>
-                      {{
-                        item.gelar_depan +
-                        " " +
-                        item.nama +
-                        ", " +
-                        item.gelar_belakang
-                      }}
-                    </p>
-                    <div class="h-max w-max px-1 bg-white rounded-md">
-                      <p class="text-sm font-semibold mt-2 text-primary-green">
-                        {{ item.spesialisasi }}
+                    <div class="sticky top-0 pt-4 bg-primary-green">
+                      <p>
+                        {{
+                          getDokterName(
+                            item.gelar_depan,
+                            item.nama,
+                            item.gelar_belakang
+                          )
+                        }}
                       </p>
+                      <div class="h-max w-max px-1 bg-white rounded-md">
+                        <p
+                          class="text-sm font-semibold mt-2 text-primary-green">
+                          {{ item.spesialisasi }}
+                        </p>
+                      </div>
+                      <div class="h-[2px] w-full bg-white my-2" />
                     </div>
-                    <div class="h-[2px] w-full bg-white my-2" />
                     <p class="text-xs">{{ item.tentang }}</p>
                   </div>
                 </template>
@@ -117,6 +125,13 @@ export default {
         this.selectedFilters.splice(index, 1);
       }
     },
+    getDokterName(glrdpn, nama, glrblkg) {
+      if (glrblkg === "") {
+        return glrdpn + " " + nama;
+      } else {
+        return glrdpn + " " + nama + ", " + glrblkg;
+      }
+    },
   },
   watch: {
     selectedFilters: {
@@ -146,5 +161,17 @@ export default {
 .fade-enter-from,
 .fade-leave-to {
   @apply opacity-0 translate-y-4;
+}
+</style>
+<style scoped>
+::-webkit-scrollbar {
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
 }
 </style>

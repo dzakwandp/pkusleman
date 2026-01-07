@@ -21,7 +21,7 @@
           :key="item.index"
           class="flex items-center gap-2 mb-2">
           <font-awesome-icon
-            :icon="['fas','caret-right']"
+            :icon="['fas', 'caret-right']"
             class="text-primary-green text-xl" />
           <a :href="item.link">
             {{ item.text }}
@@ -35,7 +35,7 @@
           :key="item.index"
           class="flex items-center gap-2 mb-2">
           <font-awesome-icon
-            :icon="['fas','caret-right']"
+            :icon="['fas', 'caret-right']"
             class="text-primary-green text-xl" />
           <a :href="item.link">
             {{ item.text }}
@@ -49,7 +49,7 @@
           :key="item.index"
           class="flex items-center gap-2 mb-2">
           <font-awesome-icon
-            :icon="['fas','caret-right']"
+            :icon="['fas', 'caret-right']"
             class="text-primary-green text-xl" />
           <a :href="item.link">
             {{ item.text }}
@@ -99,7 +99,7 @@ export default {
         },
         {
           text: "Sejarah",
-          link: "/sejarah",
+          link: "/history",
         },
         {
           text: "Visi - Misi",
@@ -117,7 +117,7 @@ export default {
         },
         {
           text: "Promo Spesial",
-          link: "#",
+          link: "/promo",
         },
       ],
     };
