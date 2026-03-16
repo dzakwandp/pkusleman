@@ -12,6 +12,7 @@ import InfoBed from "@/views/Informasi/InfoBed.vue";
 import Asuransi from "@/views/Informasi/Asuransi.vue";
 import Promo from "@/views/Informasi/Promo.vue";
 import ArtikelBerita from "@/views/Informasi/ArtikelBerita.vue";
+import ArtikelDetail from "@/views/Informasi/ArtikelDetail.vue";
 
 import Redir from "@/views/Redir.vue";
 import NotFound from "@/views/404.vue";
@@ -146,6 +147,11 @@ const router = createRouter({
       path: "/artikel-berita",
       name: "artikel-berita",
       component: ArtikelBerita,
+    },
+    {
+      path: "/artikel/:slug",
+      name: "artikel-detail",
+      component: ArtikelDetail,
     },
     {
       path: "/:pathMatch(.*)*",

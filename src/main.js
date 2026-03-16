@@ -24,7 +24,12 @@ library.add(faWhatsapp, faInstagram, faYoutube, faEnvelope, fas);
 
 AOS.init();
 
+import { createHead } from "@unhead/vue/client";
+
+const head = createHead();
+
 createApp(App)
   .use(router)
+  .use(head)
   .component("font-awesome-icon", FontAwesomeIcon)
   .mount("#app");
