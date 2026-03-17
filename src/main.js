@@ -18,9 +18,9 @@ import {
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
-import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
+import { faEnvelope, faClock } from "@fortawesome/free-regular-svg-icons";
 /* add icons to the library */
-library.add(faWhatsapp, faInstagram, faYoutube, faEnvelope, fas);
+library.add(faWhatsapp, faInstagram, faYoutube, faEnvelope, fas, faClock);
 
 AOS.init();
 
