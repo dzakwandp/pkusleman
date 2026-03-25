@@ -11,10 +11,10 @@
         <button
           v-for="tag in allTags"
           :key="tag"
-          @click="selectedTag = selectedTag === tag ? '' : tag"
+          @click="toggleTag(tag)"
           :class="[
             'px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap shrink-0',
-            selectedTag === tag ? 'bg-primary-green text-white shadow-md' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+            selectedTags.includes(tag) ? 'bg-primary-green text-white shadow-md' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
           ]"
         >
           {{ tag }}
@@ -85,7 +85,7 @@ export default {
   data() {
     return {
       artikel: [],
-      selectedTag: '',
+      selectedTags: [],
       sortOrder: 'newest', // default sort order
     };
   },
@@ -101,10 +101,10 @@ export default {
     filteredArtikel() {
       let filtered = this.artikel;
       
-      if (this.selectedTag) {
+      if (this.selectedTags.length > 0) {
         filtered = filtered.filter(item => {
           const tagsArray = this.parseTags(item.tags);
-          return tagsArray.includes(this.selectedTag);
+          return this.selectedTags.some(tag => tagsArray.includes(tag));
         });
       }
 
@@ -117,6 +117,13 @@ export default {
     }
   },
   methods: {
+    toggleTag(tag) {
+      if (this.selectedTags.includes(tag)) {
+        this.selectedTags = this.selectedTags.filter(t => t !== tag);
+      } else {
+        this.selectedTags.push(tag);
+      }
+    },
     parseTags(tagsData) {
       if (!tagsData) return [];
       if (Array.isArray(tagsData)) return tagsData.filter(t => t);

@@ -52,7 +52,10 @@ const router = createRouter({
           router.push({ name: "redir", query: { from: "jadwaldokter" } });
         } else {
           window
-            .open("https://daftar.pkusleman.com/jadwal-dokter/", "_blank")
+            .open(
+              "https://app.pkusleman.com/pendaftaran/?p=view_jadwal_dokter",
+              "_blank",
+            )
             .focus();
         }
       },

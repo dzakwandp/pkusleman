@@ -37,9 +37,9 @@
           <font-awesome-icon
             :icon="['fas', 'caret-right']"
             class="text-primary-green text-xl" />
-          <a :href="item.link">
+          <RouterLink :to="item.link">
             {{ item.text }}
-          </a>
+          </RouterLink>
         </div>
       </div>
       <div class="flex flex-col md:w-1/4">
@@ -51,9 +51,9 @@
           <font-awesome-icon
             :icon="['fas', 'caret-right']"
             class="text-primary-green text-xl" />
-          <a :href="item.link">
+          <RouterLink :to="item.link">
             {{ item.text }}
-          </a>
+          </RouterLink>
         </div>
       </div>
     </div>
