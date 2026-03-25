@@ -111,6 +111,39 @@
         <img :src="doctor" class="" />
       </div>
     </div>
+    <div class="flex flex-col h-max py-20 px-4 md:px-20 gap-8 items-center bg-gray-50">
+      <div class="flex flex-col justify-center items-center text-center" data-aos="fade-up" data-aos-duration="1000">
+        <p class="text-4xl text-gray-800">Artikel & Berita Terbaru.</p>
+        <p class="text-gray-800 mt-2">
+          Ikuti terus perkembangan informasi terkini dan berita dari RS PKU Muhammadiyah Sleman.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl mt-4">
+        <router-link
+          v-for="item in latestArticles"
+          :key="item.id"
+          :to="`/artikel/${item.slug}`"
+          class="flex flex-col group cursor-pointer"
+        >
+          <div class="w-full h-48 md:h-64 overflow-hidden rounded-2xl mb-4">
+            <img
+              :src="item.gambar"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+          <p class="text-xs text-primary-green font-medium mb-2">{{ moment(item.createdAt).format("DD MMMM YYYY") }}</p>
+          <h3 class="text-xl font-bold text-gray-800 line-clamp-2 mb-2 group-hover:text-primary-green transition-colors">{{ item.judul }}</h3>
+          <p class="text-sm text-gray-600 line-clamp-2" v-html="item.konten ? item.konten.replace(/<[^>]*>?/gm, '').substring(0, 100) + '...' : ''"></p>
+        </router-link>
+      </div>
+      
+      <Button
+        class="w-48 rounded-xl text-gray-800 mt-4"
+        text="Lihat Semua Artikel"
+        @click="this.$router.push('/artikel-berita')"
+      />
+    </div>
     <div
       v-if="testimoniLoad"
       class="flex flex-col-reverse md:flex-row h-max md:h-[90vh] py-10">
@@ -204,6 +237,7 @@ export default {
   },
   data() {
     return {
+      moment: moment,
       mainImage: mainImage,
       doctor: doctor,
       mainMenu: [
@@ -239,6 +273,7 @@ export default {
       testimoni: [],
       testimoniLoad: false,
       mitra: [],
+      latestArticles: [],
     };
   },
   methods: {
@@ -263,10 +298,23 @@ export default {
         console.log(err);
       }
     },
+    async getArtikel() {
+      try {
+        const response = await axios.get("https://apiweb.pkusleman.com/api/artikel");
+        const sorted = response.data.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+        this.latestArticles = sorted.slice(0, 3).map(data => ({
+          ...data,
+          gambar: `https://apiweb.pkusleman.com${data.gambar}`
+        }));
+      } catch (err) {
+        console.log("Error fetching homepage artikel:", err);
+      }
+    },
   },
   mounted() {
     this.getMitra();
     this.getReview();
+    this.getArtikel();
   },
 };
 </script>
