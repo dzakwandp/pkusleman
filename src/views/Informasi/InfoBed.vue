@@ -23,17 +23,15 @@
         v-for="item in filteredTTidur"
         :key="item.index"
         class="flex flex-col w-full h-full p-4 shadow-lg text-gray-800 rounded-xl hover:bg-primary-green hover:text-white transition duration-500">
-        <img :src="getImage(item.kodekelas)" class="rounded-xl mb-2" />
-        <p class="text-sm font-bold">{{ getKelas(item.kodekelas) }}</p>
-        <p class="font-semibold">{{ item.namaruang }}</p>
+        <img :src="getImage(item.KELAS)" class="rounded-xl mb-2" />
+        <p class="text-sm font-bold">{{ getKelas(item.KELAS) }}</p>
+        <p class="font-semibold">{{ item.FS_NM_KAMAR }}</p>
         <div class="flex justify-between text-sm">
-          <p>Tersedia: {{ item.tersedia }}</p>
-          <p>Kapasitas: {{ item.kapasitas }}</p>
+          <p>Tersedia: {{ item.KAMAR_KOSONG }}</p>
+          <p>Kapasitas: {{ item.KAMAR_KAPASITAS }}</p>
         </div>
         <p class="text-xs mt-2">
-          Terakhir Update: <br />{{
-            moment(item.tanggal_updated).format("DD-MM-YYYY HH:mm:s")
-          }}
+          Terakhir Update: <br />{{ moment().format("DD-MM-YYYY HH:mm:s") }}
         </p>
       </div>
     </div>
@@ -62,14 +60,15 @@ export default {
       filteredTTidur: [],
       image: [hcu, icu, isolasi, kelas1, kelas2, kelas3, nicu, nonkelas],
       kelas: [
-        { kode: "KL1", text: "Kelas 1" },
-        { kode: "KL2", text: "Kelas 2" },
-        { kode: "KL3", text: "Kelas 3" },
-        { kode: "NON", text: "Non Kelas" },
-        { kode: "NIC", text: "NICU" },
-        { kode: "ISO", text: "Isolasi" },
+        { kode: "KLAS I", text: "Kelas 1" },
+        { kode: "KLAS II", text: "Kelas 2" },
+        { kode: "KLAS III", text: "Kelas 3" },
+        { kode: "NICU", text: "NICU" },
+        { kode: "KBY", text: "KBY" },
+        { kode: "ISOLASI", text: "Isolasi" },
         { kode: "ICU", text: "ICU" },
         { kode: "HCU", text: "HCU" },
+        { kode: "KLAS VIP ", text: "VIP" },
       ],
       selectedFilters: [],
     };
@@ -78,9 +77,9 @@ export default {
     async getTTidur() {
       try {
         const tidur = await axios.get(
-          "https://apiweb.pkusleman.com/api/tempat-tidur"
+          "https://apiweb.pkusleman.com/api/tempat-tidur",
         );
-        this.ttidur = tidur.data;
+        this.ttidur = tidur.data.recordset;
         this.filteredTTidur = this.ttidur;
         console.log(this.ttidur);
       } catch (err) {
@@ -89,26 +88,32 @@ export default {
     },
     getKelas(kode) {
       switch (kode) {
-        case "ISO":
+        case "ISOLASI":
           return "Isolasi";
           break;
         case "ICU":
           return "ICU";
           break;
-        case "NIC":
+        case "NICU":
           return "NICU";
           break;
         case "HCU":
           return "HCU";
           break;
-        case "KL1":
+        case "KLAS I":
           return "Kelas 1";
           break;
-        case "KL2":
+        case "KLAS II":
           return "Kelas 2";
           break;
-        case "KL3":
+        case "KLAS III":
           return "Kelas 3";
+          break;
+        case "KLAS VIP ":
+          return "VIP";
+          break;
+        case "KBY":
+          return "KBY";
           break;
         default:
           return "Non Kelas";
@@ -116,26 +121,32 @@ export default {
     },
     getImage(kode) {
       switch (kode) {
-        case "ISO":
+        case "ISOLASI":
           return this.image[2];
           break;
         case "ICU":
           return this.image[1];
           break;
-        case "NIC":
+        case "NICU":
           return this.image[6];
           break;
         case "HCU":
           return this.image[0];
           break;
-        case "KL1":
+        case "KLAS I":
           return this.image[3];
           break;
-        case "KL2":
+        case "KLAS II":
           return this.image[4];
           break;
-        case "KL3":
+        case "KLAS III":
           return this.image[5];
+          break;
+        case "KLAS VIP ":
+          return this.image[7];
+          break;
+        case "KBY":
+          return this.image[7];
           break;
         default:
           return this.image[7];
@@ -157,7 +168,7 @@ export default {
           this.filteredTTidur = this.ttidur;
         } else {
           this.filteredTTidur = this.ttidur.filter((kelas) =>
-            this.selectedFilters.includes(kelas.kodekelas)
+            this.selectedFilters.includes(kelas.KELAS),
           );
         }
       },

@@ -73,6 +73,23 @@
           <p class="text-sm text-gray-500 dark:text-neutral-500">
             {{ props.testimonials[active].designation }}
           </p>
+          <div class="mt-2 flex gap-1">
+            <Motion
+              v-for="i in 5"
+              :key="i"
+              :initial="{ opacity: 0, scale: 0 }"
+              :animate="{ opacity: 1, scale: 1 }"
+              :transition="{
+                delay: 0.1 + i * 0.05,
+                duration: 0.3,
+                type: 'spring',
+                stiffness: 260,
+                damping: 20,
+              }"
+              class="text-yellow-400">
+              <font-awesome-icon :icon="['fas', 'star']" class="size-4" />
+            </Motion>
+          </div>
           <Motion
             as="p"
             class="mt-8 text-sm text-gray-500 dark:text-neutral-300">
@@ -196,12 +213,13 @@ function handleVisibilityChange() {
   }
 }
 
-function getImage(gender: string) {
-  if (gender === "male") {
+function getImage(image: string) {
+  if (image === "male") {
     return avaMale;
-  } else {
+  } else if (image === "female") {
     return avaFemale;
   }
+  return image;
 }
 
 function handleNext() {
