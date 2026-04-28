@@ -41,14 +41,14 @@
 <script>
 import axios from "axios";
 import moment from "moment";
-import hcu from "@/assets/images/bed/hcu.jpg";
-import icu from "@/assets/images/bed/icu.jpg";
-import isolasi from "@/assets/images/bed/isolasi.jpg";
-import kelas1 from "@/assets/images/bed/kelas1.jpg";
-import kelas2 from "@/assets/images/bed/kelas2.jpg";
-import kelas3 from "@/assets/images/bed/kelas3.jpg";
-import nicu from "@/assets/images/bed/nicu.jpg";
-import nonkelas from "@/assets/images/bed/nonkelas.jpg";
+import hcu from "@/assets/images/bed/hcu.webp";
+import icu from "@/assets/images/bed/icu.webp";
+import isolasi from "@/assets/images/bed/isolasi.webp";
+import kelas1 from "@/assets/images/bed/kelas1.webp";
+import kelas2 from "@/assets/images/bed/kelas2.webp";
+import kelas3 from "@/assets/images/bed/kelas3.webp";
+import vip from "@/assets/images/bed/vip.webp";
+import nicu from "@/assets/images/bed/nicu.webp";
 
 export default {
   setup() {
@@ -58,7 +58,7 @@ export default {
     return {
       ttidur: [],
       filteredTTidur: [],
-      image: [hcu, icu, isolasi, kelas1, kelas2, kelas3, nicu, nonkelas],
+      image: [hcu, icu, isolasi, kelas1, kelas2, kelas3, nicu, vip],
       kelas: [
         { kode: "KLAS I", text: "Kelas 1" },
         { kode: "KLAS II", text: "Kelas 2" },

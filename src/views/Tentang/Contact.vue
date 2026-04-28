@@ -98,7 +98,6 @@ export default {
       }
     },
     trClass(id) {
-      console.log(id);
       if (id / 2 === 1) {
         return "bg-gray-100";
       }

@@ -19,11 +19,17 @@
         <template #accordion-content>
           <div class="flex flex-col p-4">
             <div class="flex flex-col md:flex-row">
-              <div class="flex flex-col gap-2">
-                <img
-                  v-for="item in JSON.parse(item.gambar)"
-                  :src="'https://apiweb.pkusleman.com' + item"
-                  alt="" />
+              <div class="flex flex-col gap-2 md:w-1/2 shrink-0">
+                <ImageSlider
+                  v-if="item.gambar && JSON.parse(item.gambar).length > 0"
+                  :images="
+                    JSON.parse(item.gambar).map(
+                      (img) => 'https://apiweb.pkusleman.com' + img,
+                    )
+                  "
+                  class="w-full aspect-[16/9] rounded-xl"
+                  :autoplay="true"
+                  imageClass="object-cover w-full h-full" />
               </div>
               <div v-html="item.deskripsi" class="p-2" />
             </div>
@@ -49,10 +55,12 @@ import axios from "axios";
 
 import Accordion from "@/components/accordion/Accordion.vue";
 import AccordionItem from "@/components/accordion/AccordionItem.vue";
+import ImageSlider from "@/components/inspira-ui/ImageSlider.vue";
 export default {
   components: {
     Accordion,
     AccordionItem,
+    ImageSlider,
   },
   data() {
     return {
@@ -63,7 +71,7 @@ export default {
     async getData() {
       try {
         const data = await axios.get(
-          "https://apiweb.pkusleman.com/api/layanan/poli"
+          "https://apiweb.pkusleman.com/api/layanan/poli",
         );
         this.data = data.data;
       } catch (err) {

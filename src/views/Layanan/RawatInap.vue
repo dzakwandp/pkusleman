@@ -19,11 +19,13 @@
         <template #accordion-content>
           <div class="flex flex-col p-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div class="flex flex-col gap-3">
-                <img
-                  v-for="item in JSON.parse(item.gambar)"
-                  :key="item.index"
-                  :src="item" />
+              <div class="flex flex-col gap-3 shrink-0">
+                <ImageSlider
+                  v-if="item.gambar && JSON.parse(item.gambar).length > 0"
+                  :images="JSON.parse(item.gambar)"
+                  class="w-full aspect-[16/9] rounded-xl"
+                  :autoplay="true"
+                  imageClass="object-cover w-full h-full" />
               </div>
               <div class="flex flex-col px-2 gap-3">
                 <p class="text-2xl font-semibold">{{ item.nama_ruangan }}</p>
@@ -74,11 +76,13 @@ import axios from "axios";
 import Accordion from "@/components/accordion/Accordion.vue";
 import AccordionItem from "@/components/accordion/AccordionItem.vue";
 import HoverButton from "@/components/inspira-ui/InteractiveHoverButton.vue";
+import ImageSlider from "@/components/inspira-ui/ImageSlider.vue";
 export default {
   components: {
     Accordion,
     AccordionItem,
     HoverButton,
+    ImageSlider,
   },
   data() {
     return {
@@ -89,13 +93,13 @@ export default {
     async getData() {
       try {
         const data = await axios.get(
-          "https://apiweb.pkusleman.com/api/layanan/ranap"
+          "https://apiweb.pkusleman.com/api/layanan/ranap",
         );
         this.data = data.data;
         this.data.forEach((obj) => {
           let gambarArray = JSON.parse(obj.gambar); // parse string to array
           let updated = gambarArray.map(
-            (img) => "https://apiweb.pkusleman.com" + img
+            (img) => "https://apiweb.pkusleman.com" + img,
           ); // modify each string
           obj.gambar = JSON.stringify(updated); // convert back to string
         });
@@ -132,8 +136,7 @@ ul#list {
 }
 
 ul#list li {
-  background: url("../../assets/icons/Check.svg")
-    2px 4px no-repeat;
+  background: url("../../assets/icons/Check.svg") 2px 4px no-repeat;
   display: list-item;
   padding: 0px 0px 3px 20px;
   overflow: visible;
