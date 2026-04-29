@@ -47,7 +47,7 @@ export default {
     async getData() {
       try {
         const data = await axios.get(
-          "https://apiweb.pkusleman.com/api/layanan/rehab-medik",
+          "https://apiweb.pkusleman.com/api/layanan/rehab-tumbuh-kembang",
         );
         this.data = data.data;
         this.image = JSON.parse(this.data[0].gambar).map(

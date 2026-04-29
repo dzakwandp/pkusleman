@@ -25,6 +25,7 @@ import LayanFarmasi from "@/views/layanan/Farmasi.vue";
 import RawatInap from "@/views/layanan/RawatInap.vue";
 import BedahSentral from "@/views/layanan/BedahSentral.vue";
 import RehabMedik from "@/views/layanan/RehabMedik.vue";
+import RehabTumbuhKembang from "@/views/layanan/RehabTumbuhKembang.vue";
 // import farmasi from "@/views/layanan/farmasi.vue";
 // import radiologi from "@/views/layanan/radiologi.vue";
 // import laboratorium from "@/views/layanan/laboratorium.vue";
@@ -116,6 +117,11 @@ const router = createRouter({
       path: "/layanan-rehab-medik",
       name: "layanan-rehab-medik",
       component: RehabMedik,
+    },
+    {
+      path: "/layanan-rehab-tumbuh-kembang",
+      name: "layanan-rehab-tumbuh-kembang",
+      component: RehabTumbuhKembang,
     },
     {
       path: "/dokter",
