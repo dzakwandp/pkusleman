@@ -49,7 +49,7 @@
                       Intl.NumberFormat("id-ID", {
                         style: "currency",
                         currency: "IDR",
-                        maximumSignificantDigits: 1,
+                        maximumSignificantDigits: 10,
                       }).format(item.harga)
                     }}
                     <span class="text-sm font-bold text-gray-500">/hari</span>
