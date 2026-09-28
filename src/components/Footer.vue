@@ -75,7 +75,7 @@ export default {
           icon: ["fas", "location-dot"],
           text: "Jl. Pendowoharjo, Sawahan, Pandowoharjo, Kec. Sleman, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55512",
         },
-        { icon: ["fas", "at"], text: "pkusleman@gmail.com" },
+        { icon: ["fas", "at"], text: "rspkusleman@gmail.com" },
         { icon: ["fas", "phone"], text: "(0274) 7778610" },
       ],
       hubungiKami: [
